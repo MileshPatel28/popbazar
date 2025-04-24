@@ -22,7 +22,7 @@ class AnnonceController
 
     chargerVue('annonces/index', [
       "id_categorie" => $donnes["id"],
-      "nom_categorie" => $nom_categorie
+      "nom_categorie" => $nom_categorie // Mark for deprication (il faut faire un requête)
     ]);
   }
 
