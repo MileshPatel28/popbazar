@@ -19,17 +19,29 @@ class Categorie
 
     $this->bd = new Database($config);  // Instance de la classe Database 
 
-    $stm = $this-> bd -> requete(
-      'SELECT * FROM categories WHERE id = :id',
-      ["id" => $id_categorie]
-    );
+    if($id_categorie != 0){
+      $this -> categorie = $this-> bd -> requete(
+        'SELECT * FROM categories WHERE id = :id',
+        ["id" => $id_categorie]
+      ) -> fetch();
+  
+      $this -> tableau_annonces = $this -> bd -> requete(
+        'SELECT * FROM produits WHERE categorie_id = :id',
+        ["id" => $id_categorie]
+      ) -> fetchAll();
+    }
+    else if($id_categorie == 0){
 
-    $this -> categorie = $stm -> fetch();
+      $this -> categorie = [
+        "nom" => "Toutes"
+      ];
 
-    $this -> tableau_annonces = $this -> bd -> requete(
-      'SELECT * FROM produits WHERE categorie_id = :id',
-      ["id" => $id_categorie]
-    ) -> fetchAll();
+      $this -> tableau_annonces = $this -> bd -> requete(
+        'SELECT * FROM produits'
+      ) -> fetchAll();
+    }
+
+
 
   }
 

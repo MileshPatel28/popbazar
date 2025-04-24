@@ -27,13 +27,13 @@ chargerVuePartielle('_nav');
     <div class="d-flex justify-content-between align-items-center mb-4">
         <ul class="nav nav-pills tab-pills">
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si aucune sélection n'est faite -->" href="/annonces">Toutes (<!-- Afficher le nombre total d'annonces -->)</a>
+                <a class="nav-link active" href="/annonces"> Toutes (<!-- Afficher le nombre total d'annonces -->)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si la sélection est "actives" -->" href="/annonces?selection=actives">Actives (<!-- Afficher le nombre d'annonces actives -->)</a>
+                <a class="nav-link active" href="/annonces?selection=actives"> Actives (<!-- Afficher le nombre d'annonces actives -->)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si la sélection est "vendues" -->" href="/annonces?selection=vendues">Vendues (<!-- Afficher le nombre d'annonces vendues -->)</a>
+                <a class="nav-link active" href="/annonces?selection=vendues"> Vendues (<!-- Afficher le nombre d'annonces vendues -->)</a>
             </li>
         </ul>
 

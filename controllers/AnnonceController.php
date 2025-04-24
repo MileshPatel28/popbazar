@@ -18,7 +18,9 @@ class AnnonceController
   }
 
   public function index($donnes){
-    $nom_categorie = obtenir_nom_categorie($donnes["id"]);
+    if(!isset($donnes["id"])){
+      $donnes["id"] = 0;
+    }
     
     require_once get_chemin_defaut('models/Categorie.php');
     $categorie = new Categorie($donnes["id"]);
