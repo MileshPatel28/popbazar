@@ -12,4 +12,5 @@
  */
 
 $routeur->get("/", "AccueilController@index");
+$routeur->get("/annonces","AnnonceController@index");
 

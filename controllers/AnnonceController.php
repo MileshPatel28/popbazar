@@ -17,4 +17,9 @@ class AnnonceController
     $this->annonce = new Annonce(); // instance du modèle Annonce
   }
 
+  public function index(){
+
+    chargerVue('annonces/index');
+  }
+
 }
