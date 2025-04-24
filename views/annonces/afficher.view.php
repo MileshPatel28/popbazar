@@ -1,5 +1,12 @@
 <!-- À inclure : entête et navigation -->
 
+<?php
+
+chargerVuePartielle('_entete');
+chargerVuePartielle('_nav');
+
+?>
+
 <!-- Main Content -->
 <div class="container mt-3">
   <div class="row">

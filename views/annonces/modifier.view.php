@@ -1,5 +1,13 @@
 <!-- Inclure la vue partielle _entete ici -->
+<?php
+chargerVuePartielle('_entete');
+?>
+
 <!-- Inclure la vue partielle _nav ici -->
+<?php
+chargerVuePartielle('_nav');
+?>
+
 
 <!-- Main Content -->
 <div class="container mt-4">

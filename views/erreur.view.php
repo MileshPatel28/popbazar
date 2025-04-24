@@ -1,5 +1,10 @@
 <!-- À inclure : entête et navigation -->
 
+<?php
+chargerVuePartielle('_entete');
+chargerVuePartielle('_nav');
+?>
+
 <div class="container">
   <div class="error-container">
     <h1 class="error-code"><!-- Code d'erreur à afficher --></h1>
