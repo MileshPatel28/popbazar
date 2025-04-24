@@ -201,5 +201,5 @@ chargerVuePartielle('_nav');
 
 <!-- Inclure la vue partielle _pied_page ici -->
 <?php
-chargerVuePartielle('_pied_page.php');
+chargerVuePartielle('_pied_page');
 ?>

@@ -155,5 +155,5 @@ chargerVuePartielle('_nav');
 
 <!-- Inclure le pied de page ici -->
 <?php
-chargerVuePartielle('_pied_page.php');
+chargerVuePartielle('_pied_page');
 ?>

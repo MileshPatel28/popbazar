@@ -427,5 +427,5 @@ chargerVuePartielle('_nav');
 
 <!-- À inclure : pied de page -->
 <?php
-chargerVuePartielle('_pied_page.php');
+chargerVuePartielle('_pied_page');
 ?>
