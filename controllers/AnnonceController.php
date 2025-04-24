@@ -17,9 +17,12 @@ class AnnonceController
     $this->annonce = new Annonce(); // instance du modèle Annonce
   }
 
-  public function index($id_categorie){
+  public function index($donnes){
+    $nom_categorie = obtenir_nom_categorie($donnes["id"]);
 
-    chargerVue('annonces/index');
+    chargerVue('annonces/index', [
+      "nom_categorie" => $nom_categorie
+    ]);
   }
 
 }
