@@ -141,3 +141,6 @@ chargerVuePartielle('_nav');
 </div>
 
 <!-- À inclure : pied de page -->
+<?php
+chargerVuePartielle('_pied_page.php');
+?>

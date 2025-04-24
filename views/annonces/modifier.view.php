@@ -200,3 +200,6 @@ chargerVuePartielle('_nav');
 </script>
 
 <!-- Inclure la vue partielle _pied_page ici -->
+<?php
+chargerVuePartielle('_pied_page.php');
+?>

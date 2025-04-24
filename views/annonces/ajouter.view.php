@@ -154,3 +154,6 @@ chargerVuePartielle('_nav');
   }
 </script>
 <!-- Inclure le pied de page ici -->
+<?php
+chargerVuePartielle('_pied_page.php');
+?>
