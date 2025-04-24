@@ -50,7 +50,7 @@ chargerVuePartielle('_nav');
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
                     <div class="listing-status">
-                        <span class="badge bg-success"><!-- Afficher "Active" ou "Inactive" selon l'état de l'annonce --></span>
+                        <span class="badge bg-success"> <?= ($annonce["est_actif"] == 1) ? 'Active' : 'Inactive' ?> </span>
                     </div>
                     <div class="listing-actions">
                         <div class="dropdown">
