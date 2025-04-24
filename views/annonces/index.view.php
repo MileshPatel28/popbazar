@@ -14,12 +14,12 @@ chargerVuePartielle('_nav');
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-item active"> <?= $nom_categorie ?> </li>
+            <li class="breadcrumb-item active"> <?= $obj_categorie["nom"] ?> </li>
         </ol>
     </nav>
 
     <div class="section-header">
-        <h2><i class="fas fa-bullhorn me-2"></i><?= $nom_categorie ?></h2>
+        <h2><i class="fas fa-bullhorn me-2"></i><?= $obj_categorie["nom"] ?></h2>
     </div>
 
 

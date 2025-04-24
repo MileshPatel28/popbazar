@@ -20,11 +20,11 @@ class AnnonceController
   public function index($donnes){
     $nom_categorie = obtenir_nom_categorie($donnes["id"]);
     
-    $categorie = new Categorie();
+    require_once get_chemin_defaut('models/Categorie.php');
+    $categorie = new Categorie($donnes["id"]);
 
     chargerVue('annonces/index', [
-      "id_categorie" => $donnes["id"],
-      "obj_categorie" => $categorie -> get_categorie($donnes["id"])   
+      "obj_categorie" => $categorie->get()  
     ]);
   }
 
