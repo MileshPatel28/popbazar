@@ -21,6 +21,7 @@ class AnnonceController
     $nom_categorie = obtenir_nom_categorie($donnes["id"]);
 
     chargerVue('annonces/index', [
+      "id_categorie" => $donnes["id"],
       "nom_categorie" => $nom_categorie
     ]);
   }
