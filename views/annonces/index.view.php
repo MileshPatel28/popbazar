@@ -58,12 +58,12 @@ chargerVuePartielle('_nav');
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/annonces/<!-- ID du produit -->"><i class="fas fa-eye me-2"></i>Voir</a></li>
-                                <li><a class="dropdown-item" href="/annonces/<!-- ID du produit -->/modifier"><i class="fas fa-edit me-2"></i>Modifier</a></li>
+                                <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>"><i class="fas fa-eye me-2"></i>Voir</a></li>
+                                <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>/modifier"><i class="fas fa-edit me-2"></i>Modifier</a></li>
                                 <li>
 
                                     <!-- Formulaire pour marquer comme vendu -->
-                                    <form id="form-vendue" method="POST" action="/annonces/<!-- ID du produit -->">
+                                    <form id="form-vendue" method="POST" action="/annonces/<?=$annonce["id"]?>">
                                         <input type="hidden" name="est_vendu" value="1">
                                         <button class="dropdown-item text-danger" type="submit"><i class="fas fa-check-circle me-2"></i>Marquer comme vendu</button>
                                     </form>
@@ -83,16 +83,18 @@ chargerVuePartielle('_nav');
                     </div>
                     <img src="/images/300x200.png" class="card-img-top" alt="PS5">
                     <div class="card-body">
-                        <h5 class="card-title"><!-- Afficher le titre de l'annonce --></h5>
+                        <h5 class="card-title"><?= $annonce["titre"] ?></h5>
                         <div class="mb-2">
-                            <span class="price-tag"><!-- Afficher le prix de l'annonce --></span>
+                            <span class="price-tag"><?= $annonce["prix"] ?></span>
                             <span class="badge bg-primary ms-2"><!-- Afficher la catégorie de l'annonce --></span>
-                            <span class="badge bg-secondary ms-2"><!-- Afficher l'état du produit --></span>
+                            <span class="badge bg-secondary ms-2"> <?= $annonce["etat"] ?></span>
                             <!-- Si le produit est vendu -->
-                                <span class="badge bg-danger text-light ms-2"><!-- Afficher "Vendu" si le produit est vendu --></span>
+                             <?php if($annonce["est_vendu"] == 1) {?>
+                                <span class="badge bg-danger text-light ms-2">Vendu</span>
+                             <?php }?>
                             <!-- Fin si -->
                         </div>
-                        <p class="card-text"><!-- Afficher la description de l'annonce --></p>
+                        <p class="card-text"><?= $annonce["description"] ?></p>
                     </div>
                     <div class="card-footer bg-white">
                         <div class="d-flex justify-content-between align-items-center">
