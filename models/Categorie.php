@@ -8,7 +8,8 @@
 class Categorie
 {
   private $bd; // Connexion à la base de données
-  private $tableau_categorie;
+  private $categorie;
+  private $tableau_annonces;
 
 
   public function __construct($id_categorie)
@@ -23,11 +24,20 @@ class Categorie
       ["id" => $id_categorie]
     );
 
-    $this -> tableau_categorie = $stm -> fetch();
+    $this -> categorie = $stm -> fetch();
+
+    $this -> tableau_annonces = $this -> bd -> requete(
+      'SELECT * FROM produits WHERE categorie_id = :id',
+      ["id" => $id_categorie]
+    ) -> fetchAll();
 
   }
 
   public function get(){
-    return $this -> tableau_categorie;
-}
+    return $this -> categorie;
+  }
+
+  public function get_tableau_annonces(){
+      return $this -> tableau_annonces;
+  }
 }

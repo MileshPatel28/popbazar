@@ -14,14 +14,14 @@ chargerVuePartielle('_nav');
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-            <li class="breadcrumb-item active"> <?= $obj_categorie["nom"] ?> </li>
+
+            <li class="breadcrumb-item active"> <?= $obj_categorie -> get()["nom"] ?> </li>
         </ol>
     </nav>
 
     <div class="section-header">
-        <h2><i class="fas fa-bullhorn me-2"></i><?= $obj_categorie["nom"] ?></h2>
+        <h2><i class="fas fa-bullhorn me-2"></i><?= $obj_categorie -> get()["nom"]  ?></h2>
     </div>
-
 
     <!-- Action Button -->
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -44,7 +44,8 @@ chargerVuePartielle('_nav');
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
         <!-- Pour chaque annonce -->
-
+        <?php foreach ($obj_categorie -> get_tableau_annonces() as $index => $annonce) { ?>
+            
             <!-- Listings -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
@@ -102,6 +103,7 @@ chargerVuePartielle('_nav');
                 </div>
             </div>
         <!-- Fin de la boucle -->
+        <?php } ?>
     </div>
 
 

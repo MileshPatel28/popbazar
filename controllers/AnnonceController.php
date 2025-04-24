@@ -24,7 +24,7 @@ class AnnonceController
     $categorie = new Categorie($donnes["id"]);
 
     chargerVue('annonces/index', [
-      "obj_categorie" => $categorie->get()  
+      "obj_categorie" => $categorie 
     ]);
   }
 
