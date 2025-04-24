@@ -19,10 +19,12 @@ class AnnonceController
 
   public function index($donnes){
     $nom_categorie = obtenir_nom_categorie($donnes["id"]);
+    
+    $categorie = new Categorie();
 
     chargerVue('annonces/index', [
       "id_categorie" => $donnes["id"],
-      "nom_categorie" => $nom_categorie // Mark for deprication (il faut faire un requête)
+      "obj_categorie" => $categorie -> get_categorie($donnes["id"])   
     ]);
   }
 

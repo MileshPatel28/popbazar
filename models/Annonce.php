@@ -17,4 +17,5 @@ class Annonce
 
     $this->bd = new Database($config); // Instance de la classe Database 
   }
+
 }

@@ -16,4 +16,11 @@ class Categorie
 
     $this->bd = new Database($config);  // Instance de la classe Database 
   }
+
+  public function get_categorie($id_categorie){
+    return $this-> bd -> requete(
+      'SELECT * FROM categories WHERE id = :id',
+      ["id" => $id_categorie]
+    );
+}
 }
