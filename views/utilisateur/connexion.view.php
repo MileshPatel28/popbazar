@@ -1,5 +1,10 @@
 <!-- À inclure : entête et navigation -->
+<?php
 
+chargerVuePartielle('_entete');
+chargerVuePartielle('_nav');
+
+?>
 <!-- Login Container -->
 <div class="container">
   <div class="login-container">
