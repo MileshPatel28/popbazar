@@ -19,22 +19,32 @@ class AnnonceController
 
   public function index($donnes){
 
-    
+    $option_selectionner = obtenirParametre("selection");
+    var_dump($option_selectionner);
+
     $annonces = $this -> annonce -> get_annonces();
+    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
+      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
+             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
+              $option_selectionner == null;
+    });
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
     $nombre_vendues_annonce = 0;
 
+
     foreach($annonces as $index => $annonce){
-      $nombre_totale_annonce++;
-      if($annonce["est_actif"] == 1) {
-        $nombre_active_annonce++;
-      }
-      
-      if($annonce["est_vendu"] == 1){
-        $nombre_vendues_annonce++;
-      }
+        $nombre_totale_annonce++;
+
+        if($annonce["est_actif"] == 1) {
+          $nombre_active_annonce++;
+        }
+        
+        if($annonce["est_vendu"] == 1){
+          $nombre_vendues_annonce++;
+        }
+
     }
 
     $nom_categorie = "Toutes";
