@@ -136,4 +136,9 @@ class AnnonceController
     ]);
   }
 
+
+  public function ajouter(){
+    
+  }
+
 }

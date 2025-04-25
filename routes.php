@@ -20,5 +20,7 @@ $routeur->get("/mes-annonces","AnnonceController@index_utilisateur");
 
 $routeur->get("/annonces/{id}","AnnonceController@afficher");
 
+$routeur->get("/annonces/ajouter","AnnonceController@ajouter");
+
 
 $routeur->get("/erreur","ErreurController@introuvable");
