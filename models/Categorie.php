@@ -30,5 +30,12 @@ class Categorie
       'SELECT * FROM produits WHERE categorie_id = :id',
       ["id" => $id_categorie]
     ) -> fetchAll();
-}
+  }
+
+  public function get_categorie_par_nom($nom_categorie){
+    return $this-> bd -> requete(
+      'SELECT * FROM categories WHERE nom = :nom',
+      ["nom" => $nom_categorie]
+    ) -> fetch();
+  }
 }

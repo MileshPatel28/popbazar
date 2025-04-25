@@ -136,4 +136,41 @@ class AnnonceController
     ]);
   }
 
+
+  public function index_ajouter(){
+
+    if(Session::est_connecte()){
+      chargerVue('annonces/ajouter');
+    }
+    else{
+      redirect('/connexion');
+      Session::set_flash("Vous devez être connecté pour créer une annonce.");
+    }
+
+  }
+
+  public function ajouter(){
+
+    require_once get_chemin_defaut('models/Categorie.php');
+    require_once get_chemin_defaut('models/Annonce.php');
+
+    $id_utilisateur = Session::obtenir_id_utilisateur();
+
+    $categorie = new Categorie();
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'));
+
+    $titre = obtenirParametre('titre');
+    $description = obtenirParametre('description');
+    $prix = obtenirParametre('prix');
+    $etat = obtenirParametre('etat');
+
+
+    $annonce = new Annonce();
+    $annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
+      ,$prix,$etat);
+
+    redirect('/annonces/' . $annonce -> obtenir_annonce_ajouter()["id"]);
+  
+  }
+
 }

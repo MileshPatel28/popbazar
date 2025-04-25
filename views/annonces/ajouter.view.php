@@ -8,6 +8,7 @@ chargerVuePartielle('_entete');
 
 <?php
 chargerVuePartielle('_nav');
+chargerVuePartielle('_erreur','',[]);
 ?>
 
 <!-- Main Content -->
