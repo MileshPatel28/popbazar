@@ -122,6 +122,9 @@ class AnnonceController
       }
     }
 
+    if($annonce == null){
+      redirect('/erreur');
+    }
 
     require_once get_chemin_defaut('models/Categorie.php');
     $categorie = new Categorie(); 
