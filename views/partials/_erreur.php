@@ -11,13 +11,14 @@
 
   <ul class="mb-0 list-unstyled">
     <!-- Boucle pour chaque erreur dans le tableau des erreurs -->
-     <?php foreach($donnees as $message_erreur){ ?> 
+    <?php foreach($donnees as $message_erreur){ ?> 
     <li><i class="fas fa-times-circle me-2"></i><?= $message_erreur ?></li>
-    <?php } ?>
     <!-- Fin de la boucle -->
+    <?php } ?>
+
   </ul>
 
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
 </div>
-<?php } ?>
 <!-- Fin de la condition -->
+ <?php } ?>

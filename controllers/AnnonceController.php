@@ -144,6 +144,7 @@ class AnnonceController
     }
     else{
       redirect('/connexion');
+      Session::set_flash("Vous devez être connecté pour créer une annonce.");
     }
 
   }
