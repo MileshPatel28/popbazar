@@ -102,4 +102,21 @@ class AnnonceController
     ]);
   }
 
+
+  public function afficher($param){
+    $annonces = $this -> annonce -> get_annonces();
+    $annonce = array_filter($annonces, function($annonce) use ($param) {
+      return $annonce["id"] == $param["id"];
+    })[0];
+
+    require_once get_chemin_defaut('models/Categorie.php');
+    $categorie = new Categorie(); 
+
+
+    chargerVue('annonces/afficher', [
+      "annonce" => $annonce,
+      "categorie" => $categorie->get_categorie($annonce["categorie_id"])
+    ]);
+  }
+
 }
