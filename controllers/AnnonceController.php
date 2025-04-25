@@ -105,9 +105,14 @@ class AnnonceController
 
   public function afficher($param){
     $annonces = $this -> annonce -> get_annonces();
-    $annonce = array_filter($annonces, function($annonce) use ($param) {
-      return $annonce["id"] == $param["id"];
-    })[0];
+    $annonce = null;
+
+    foreach($annonces as $annonce_tmp){
+      if($annonce_tmp["id"] == $param["id"]){
+        $annonce = $annonce_tmp;
+      }
+    }
+
 
     require_once get_chemin_defaut('models/Categorie.php');
     $categorie = new Categorie(); 
