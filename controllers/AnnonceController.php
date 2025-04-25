@@ -181,11 +181,15 @@ class AnnonceController
 
     $categorie = new Categorie();
 
-    if(Session::est_connecte()){
+    if(Session::est_connecte() && Session::obtenir_id_utilisateur() == $this -> annonce -> get_annouce_par_id($donnes["id"])["utilisateur_id"]){
       chargerVue('annonces/modifier',[
         "annonce" => $this -> annonce -> get_annouce_par_id($donnes["id"]),
         "categorie" => $categorie -> get_categorie($this -> annonce -> get_annouce_par_id($donnes["id"])["categorie_id"])
       ]);
+    }
+    else if(Session::est_connecte()){
+      redirect('/');
+      Session::set_flash("Vous n'êtes pas autorisé à modifier cette annonce.");
     }
     else{
       redirect('/connexion');
