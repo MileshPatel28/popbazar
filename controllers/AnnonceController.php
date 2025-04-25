@@ -149,9 +149,9 @@ class AnnonceController
   }
 
   public function ajouter(){
-    // redirect('/annonces');
 
-    
+    require_once get_chemin_defaut('models/Categorie.php');
+    require_once get_chemin_defaut('models/Annonce.php');
 
     $id_utilisateur = Session::obtenir_id_utilisateur();
 
@@ -168,7 +168,9 @@ class AnnonceController
     $annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
       ,$prix,$etat);
 
+    redirect('/annonces/' . $annonce -> obtenir_annonce_ajouter()["id"]);
     
+
     
 
   }

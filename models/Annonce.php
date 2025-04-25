@@ -31,14 +31,20 @@ class Annonce
         "INSERT INTO produits (utilisateur_id,categorie_id,titre,description,prix,etat)
           VALUES (:utilisateur_id,:categorie_id,:titre,:description,:prix,:etat)",
           [
-            "utilisateur_id" => $utilisateur_id,
-            "categorie_id" => $id_categorie,
+            "utilisateur_id" => intval($utilisateur_id),
+            "categorie_id" => intval($id_categorie),
             "titre" => $titre,
             "description" => $description,
-            "prix" => $prix,
+            "prix" => intval($prix),
             "etat" => $etat
           ]
       );  
+  }
+
+  public function obtenir_annonce_ajouter(){
+    return $this -> bd -> requete(
+      "SELECT * FROM produits ORDER BY id DESC"
+    ) -> fetch();
   }
 
 }
