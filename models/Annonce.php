@@ -25,4 +25,20 @@ class Annonce
       ) -> fetchAll();
   }
 
+  public function ajout_annonce($utilisateur_id,$id_categorie,$titre,$description,$prix,$etat){
+      
+      $this -> bd -> requete(
+        "INSERT INTO produits (utilisateur_id,categorie_id,titre,description,prix,etat)
+          VALUES (:utilisateur_id,:categorie_id,:titre,:description,:prix,:etat)",
+          [
+            "utilisateur_id" => $utilisateur_id,
+            "categorie_id" => $id_categorie,
+            "titre" => $titre,
+            "description" => $description,
+            "prix" => $prix,
+            "etat" => $etat
+          ]
+      );  
+  }
+
 }

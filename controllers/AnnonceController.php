@@ -150,7 +150,27 @@ class AnnonceController
 
   public function ajouter(){
     // redirect('/annonces');
-    var_dump(obtenirParametre('categorie'));
+
+    
+
+    $id_utilisateur = Session::obtenir_id_utilisateur();
+
+    $categorie = new Categorie();
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'));
+
+    $titre = obtenirParametre('titre');
+    $description = obtenirParametre('description');
+    $prix = obtenirParametre('prix');
+    $etat = obtenirParametre('etat');
+
+
+    $annonce = new Annonce();
+    $annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
+      ,$prix,$etat);
+
+    
+    
+
   }
 
 }
