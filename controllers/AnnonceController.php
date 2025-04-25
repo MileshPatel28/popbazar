@@ -59,6 +59,8 @@ class AnnonceController
     ]);
   }
 
+
+  // A faire filter la liste dependant de l'utilisateur et bien tester
   public function index_utilisateur(){
     $option_selectionner = obtenirParametre("selection");
 
