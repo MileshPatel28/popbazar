@@ -23,4 +23,6 @@ $routeur->get("/annonces/{id}","AnnonceController@afficher");
 $routeur->get("/annonces-ajouter","AnnonceController@index_ajouter");
 $routeur->post("/annonces","AnnonceController@ajouter");
 
+$routeur->get("/annonces/{id}/modifier","AnnonceController@index_modifier");
+
 $routeur->get("/connexion","UtilisateurController@connexion");

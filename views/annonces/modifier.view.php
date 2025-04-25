@@ -49,13 +49,13 @@ chargerVuePartielle('_nav');
 
         <div class="mb-3">
           <label for="title" class="form-label">Titre de l'annonce <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="title" value="<!-- titre -->" name="titre" required>
+          <input type="text" class="form-control" id="title" value="<?= $categorie["titre"]?>" name="titre" required>
           <div class="form-text">Soyez précis et concis (max. 70 caractères)</div>
         </div>
 
         <div class="mb-3">
           <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
-          <textarea class="form-control" id="description" rows="5" name="description" required><!-- description --></textarea>
+          <textarea class="form-control" id="description" rows="5" name="description" required><?= $categorie["description"]?></textarea>
           <div class="form-text">Minimum 30 caractères, évitez d'inclure vos coordonnées personnelles</div>
         </div>
 
@@ -63,7 +63,7 @@ chargerVuePartielle('_nav');
           <div class="col-md-6 mb-3">
             <label for="prix" class="form-label">Prix ($) <span class="text-danger">*</span></label>
             <div class="input-group">
-              <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" value="<!-- prix -->" required>
+              <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" value="<?= $categorie["prix"]?>" required>
               <span class="input-group-text">$</span>
             </div>
           </div>

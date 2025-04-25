@@ -173,4 +173,23 @@ class AnnonceController
   
   }
 
+
+
+  public function index_modifier($donnes){
+
+    if(Session::est_connecte()){
+      chargerVue('annonces/modifier',[
+        "categorie" => $this -> annonce -> get_annouce_par_id($donnes["id"])
+      ]);
+    }
+    else{
+      redirect('/connexion');
+      Session::set_flash("Vous devez être connecté pour modifier une annonce.");
+    }
+  }
+
+
+  public function modifier(){
+    
+  }
 }

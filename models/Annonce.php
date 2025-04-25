@@ -25,6 +25,13 @@ class Annonce
       ) -> fetchAll();
   }
 
+  public function get_annouce_par_id($id_categorie){
+    return $this -> bd -> requete(
+      'SELECT * FROM produits WHERE id = :id',
+      ["id" => $id_categorie]
+    ) -> fetch();
+  }
+
   public function ajout_annonce($utilisateur_id,$id_categorie,$titre,$description,$prix,$etat){
       
       $this -> bd -> requete(
