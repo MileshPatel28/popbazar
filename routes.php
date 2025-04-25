@@ -12,5 +12,13 @@
  */
 
 $routeur->get("/", "AccueilController@index");
-$routeur->get("/categories/{id}/annonces","AnnonceController@index");
 
+
+$routeur->get("/categories/{id}/annonces","CategorieController@index");
+$routeur->get("/annonces","AnnonceController@index_defaut");
+$routeur->get("/mes-annonces","AnnonceController@index_utilisateur");
+
+$routeur->get("/annonces/{id}","AnnonceController@afficher");
+
+
+$routeur->get("/erreur","ErreurController@introuvable");

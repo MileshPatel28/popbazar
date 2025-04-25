@@ -14,6 +14,7 @@ chargerVuePartielle('_nav');
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+
             <li class="breadcrumb-item active"> <?= $nom_categorie ?> </li>
         </ol>
     </nav>
@@ -22,18 +23,17 @@ chargerVuePartielle('_nav');
         <h2><i class="fas fa-bullhorn me-2"></i><?= $nom_categorie ?></h2>
     </div>
 
-
     <!-- Action Button -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <ul class="nav nav-pills tab-pills">
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si aucune sélection n'est faite -->" href="/annonces">Toutes (<!-- Afficher le nombre total d'annonces -->)</a>
+                <a class="nav-link active" href="/annonces"> Toutes ( <?=$nombre_totale_annonce?> )</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si la sélection est "actives" -->" href="/annonces?selection=actives">Actives (<!-- Afficher le nombre d'annonces actives -->)</a>
+                <a class="nav-link active" href="/annonces?selection=actives"> Actives ( <?=$nombre_active_annonce?> )</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <!-- Afficher "active" si la sélection est "vendues" -->" href="/annonces?selection=vendues">Vendues (<!-- Afficher le nombre d'annonces vendues -->)</a>
+                <a class="nav-link active" href="/annonces?selection=vendues"> Vendues ( <?=$nombre_vendues_annonce?> )</a>
             </li>
         </ul>
 
@@ -44,12 +44,13 @@ chargerVuePartielle('_nav');
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
         <!-- Pour chaque annonce -->
-
+        <?php foreach ($annonces as $index => $annonce) { ?>
+            
             <!-- Listings -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100">
                     <div class="listing-status">
-                        <span class="badge bg-success"><!-- Afficher "Active" ou "Inactive" selon l'état de l'annonce --></span>
+                        <span class="badge bg-success"> <?= ($annonce["est_actif"] == 1) ? 'Active' : 'Inactive' ?> </span>
                     </div>
                     <div class="listing-actions">
                         <div class="dropdown">
@@ -57,12 +58,12 @@ chargerVuePartielle('_nav');
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/annonces/<!-- ID du produit -->"><i class="fas fa-eye me-2"></i>Voir</a></li>
-                                <li><a class="dropdown-item" href="/annonces/<!-- ID du produit -->/modifier"><i class="fas fa-edit me-2"></i>Modifier</a></li>
+                                <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>"><i class="fas fa-eye me-2"></i>Voir</a></li>
+                                <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>/modifier"><i class="fas fa-edit me-2"></i>Modifier</a></li>
                                 <li>
 
                                     <!-- Formulaire pour marquer comme vendu -->
-                                    <form id="form-vendue" method="POST" action="/annonces/<!-- ID du produit -->">
+                                    <form id="form-vendue" method="POST" action="/annonces/<?=$annonce["id"]?>">
                                         <input type="hidden" name="est_vendu" value="1">
                                         <button class="dropdown-item text-danger" type="submit"><i class="fas fa-check-circle me-2"></i>Marquer comme vendu</button>
                                     </form>
@@ -82,16 +83,18 @@ chargerVuePartielle('_nav');
                     </div>
                     <img src="/images/300x200.png" class="card-img-top" alt="PS5">
                     <div class="card-body">
-                        <h5 class="card-title"><!-- Afficher le titre de l'annonce --></h5>
+                        <h5 class="card-title"><?= $annonce["titre"] ?></h5>
                         <div class="mb-2">
-                            <span class="price-tag"><!-- Afficher le prix de l'annonce --></span>
+                            <span class="price-tag"><?= $annonce["prix"] ?></span>
                             <span class="badge bg-primary ms-2"><!-- Afficher la catégorie de l'annonce --></span>
-                            <span class="badge bg-secondary ms-2"><!-- Afficher l'état du produit --></span>
+                            <span class="badge bg-secondary ms-2"> <?= $annonce["etat"] ?></span>
                             <!-- Si le produit est vendu -->
-                                <span class="badge bg-danger text-light ms-2"><!-- Afficher "Vendu" si le produit est vendu --></span>
+                             <?php if($annonce["est_vendu"] == 1) {?>
+                                <span class="badge bg-danger text-light ms-2">Vendu</span>
+                             <?php }?>
                             <!-- Fin si -->
                         </div>
-                        <p class="card-text"><!-- Afficher la description de l'annonce --></p>
+                        <p class="card-text"><?= $annonce["description"] ?></p>
                     </div>
                     <div class="card-footer bg-white">
                         <div class="d-flex justify-content-between align-items-center">
@@ -102,6 +105,7 @@ chargerVuePartielle('_nav');
                 </div>
             </div>
         <!-- Fin de la boucle -->
+        <?php } ?>
     </div>
 
 
