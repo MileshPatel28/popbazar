@@ -17,5 +17,9 @@ class UtilisateurController
     $this->utilisateur = new Utilisateur(); // instance du modèle Utilisateur
   }
 
+
+  public function connexion(){
+    chargerVue("/utilisateur/connexion");
+  }
  
 }

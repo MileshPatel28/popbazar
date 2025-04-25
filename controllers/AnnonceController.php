@@ -137,11 +137,15 @@ class AnnonceController
   }
 
 
-  public function ajouter($param){
+  public function ajouter(){
 
-    chargerVue('annonces/ajouter', [
+    if(Session::est_connecte()){
+      chargerVue('annonces/ajouter');
+    }
+    else{
+      redirect('/connexion');
+    }
 
-    ]);
   }
 
 }
