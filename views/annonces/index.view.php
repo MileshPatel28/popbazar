@@ -38,12 +38,10 @@ chargerVuePartielle('_nav');
         </ul>
 
 
-        <form method="POST" action="/annonces">
-        <button type="submit" class="btn btn-primary">
+        
+        <a href="/annonces-ajouter" class="btn btn-primary">
             <i class="fas fa-plus-circle me-2"></i>Créer une annonce
-        </button>
-        </form>
-
+        </a>
     </div>
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
