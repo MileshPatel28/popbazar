@@ -149,8 +149,8 @@ class AnnonceController
   }
 
   public function ajouter(){
-    redirect('/annonces');
-    var_dump('GDSGDSGSDGG');
+    // redirect('/annonces');
+    var_dump(obtenirParametre('categorie'));
   }
 
 }
