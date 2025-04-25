@@ -19,14 +19,32 @@ class AnnonceController
 
   public function index($donnes){
 
-    $nom_categorie = "Toutes";
+    
+    $annonces = $this -> annonce -> get_annonces();
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
     $nombre_vendues_annonce = 0;
 
+    foreach($annonces as $index => $annonce){
+      $nombre_totale_annonce++;
+      if($annonce["est_actif"] == 1) {
+        $nombre_active_annonce++;
+      }
+      
+      if($annonce["est_vendu"] == 1){
+        $nombre_vendues_annonce++;
+      }
+    }
+
+    $nom_categorie = "Toutes";
+    
     chargerVue('annonces/index', [
-      "nom_categorie" => $nom_categorie
+      "nom_categorie" => $nom_categorie,
+      "annonces" => $annonces,
+      "nombre_totale_annonce" => $nombre_totale_annonce,
+      "nombre_active_annonce" => $nombre_active_annonce,
+      "nombre_vendues_annonce" => $nombre_vendues_annonce
     ]);
   }
 

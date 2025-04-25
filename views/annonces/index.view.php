@@ -15,25 +15,25 @@ chargerVuePartielle('_nav');
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
 
-            <li class="breadcrumb-item active"> <?= $obj_categorie -> get()["nom"] ?> </li>
+            <li class="breadcrumb-item active"> <?= $nom_categorie ?> </li>
         </ol>
     </nav>
 
     <div class="section-header">
-        <h2><i class="fas fa-bullhorn me-2"></i><?= $obj_categorie -> get()["nom"]  ?></h2>
+        <h2><i class="fas fa-bullhorn me-2"></i><?= $nom_categorie ?></h2>
     </div>
 
     <!-- Action Button -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <ul class="nav nav-pills tab-pills">
             <li class="nav-item">
-                <a class="nav-link active" href="/annonces"> Toutes (<!-- Afficher le nombre total d'annonces -->)</a>
+                <a class="nav-link active" href="/annonces"> Toutes ( <?=$nombre_totale_annonce?> )</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/annonces?selection=actives"> Actives (<!-- Afficher le nombre d'annonces actives -->)</a>
+                <a class="nav-link active" href="/annonces?selection=actives"> Actives ( <?=$nombre_active_annonce?> )</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/annonces?selection=vendues"> Vendues (<!-- Afficher le nombre d'annonces vendues -->)</a>
+                <a class="nav-link active" href="/annonces?selection=vendues"> Vendues ( <?=$nombre_vendues_annonce?> )</a>
             </li>
         </ul>
 
@@ -44,7 +44,7 @@ chargerVuePartielle('_nav');
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
         <!-- Pour chaque annonce -->
-        <?php foreach ($obj_categorie -> get_tableau_annonces() as $index => $annonce) { ?>
+        <?php foreach ($annonces as $index => $annonce) { ?>
             
             <!-- Listings -->
             <div class="col-md-6 col-lg-4">
