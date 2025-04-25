@@ -137,8 +137,11 @@ class AnnonceController
   }
 
 
-  public function ajouter(){
-    
+  public function ajouter($param){
+
+    chargerVue('annonces/ajouter', [
+
+    ]);
   }
 
 }
