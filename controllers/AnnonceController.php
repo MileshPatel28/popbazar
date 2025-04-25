@@ -137,7 +137,7 @@ class AnnonceController
   }
 
 
-  public function ajouter(){
+  public function index_ajouter(){
 
     if(Session::est_connecte()){
       chargerVue('annonces/ajouter');
