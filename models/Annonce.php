@@ -18,4 +18,11 @@ class Annonce
     $this->bd = new Database($config); // Instance de la classe Database 
   }
 
+
+  public function get_annonces(){
+      return $this -> bd -> requete(
+        'SELECT * FROM produits'
+      ) -> fetchAll();
+  }
+
 }

@@ -18,15 +18,15 @@ class AnnonceController
   }
 
   public function index($donnes){
-    if(!isset($donnes["id"])){
-      $donnes["id"] = 0;
-    }
-    
-    require_once get_chemin_defaut('models/Categorie.php');
-    $categorie = new Categorie($donnes["id"]);
+
+    $nom_categorie = "Toutes";
+
+    $nombre_totale_annonce = 0;
+    $nombre_active_annonce = 0;
+    $nombre_vendues_annonce = 0;
 
     chargerVue('annonces/index', [
-      "obj_categorie" => $categorie 
+      "nom_categorie" => $nom_categorie
     ]);
   }
 

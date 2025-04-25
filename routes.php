@@ -12,5 +12,5 @@
  */
 
 $routeur->get("/", "AccueilController@index");
-$routeur->get("/categories/{id}/annonces","AnnonceController@index");
+$routeur->get("/categories/{id}/annonces","CategorieController@index");
 $routeur->get("/annonces","AnnonceController@index");
