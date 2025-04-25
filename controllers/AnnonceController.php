@@ -64,7 +64,7 @@ class AnnonceController
   public function index_utilisateur(){
 
     if(Session::est_connecte()){
-      $option_selectionner = obtenirParametre("selection");
+      $option_selectionner = obtenirParametre("filter");
       $id_utilisateur = Session::obtenir_id_utilisateur();
 
       $annonces = $this -> annonce -> get_annonces();
