@@ -37,6 +37,35 @@ chargerVuePartielle('_nav');
         <div class="row g-3">
           <!-- Cartes de catégorie -->
           <!-- Même structure conservée -->
+          <div class="row g-3">
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-gamepad"></i>
+              <h5>Jeux vidéo</h5>
+              <p class="mb-0 small text-muted">Consoles, jeux, accessoires</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-mask"></i>
+              <h5>Super-héros</h5>
+              <p class="mb-0 small text-muted">Figurines, comics, costumes</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-film"></i>
+              <h5>Films cultes</h5>
+              <p class="mb-0 small text-muted">DVDs, affiches, objets</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-tv"></i>
+              <h5>Séries TV</h5>
+              <p class="mb-0 small text-muted">Coffrets, produits dérivés</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -70,12 +99,12 @@ chargerVuePartielle('_nav');
 
           <div class="col-md-6 mb-3">
             <label class="form-label">État du produit <span class="text-danger">*</span></label>
-            <input type="hidden" id="etat" name="etat" value="<!-- etat -->">
+            <input type="hidden" id="etat" name="etat" value="<?= $annonce["etat"] ?>">
             <div>
               <!-- Boutons d’état -->
                 <input type="hidden" id="etat" name="etat" value="Neuf">
                 <div>
-                  <button type="button" class="condition-btn selected" onclick="selectCondition(this)">Neuf</button>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">Neuf</button>
                   <button type="button" class="condition-btn" onclick="selectCondition(this)">Comme neuf</button>
                   <button type="button" class="condition-btn" onclick="selectCondition(this)">Très bon état</button>
                   <button type="button" class="condition-btn" onclick="selectCondition(this)">Bon état</button>
