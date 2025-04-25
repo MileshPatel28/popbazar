@@ -100,8 +100,8 @@ chargerVuePartielle('_nav');
                     </div>
                     <div class="card-footer bg-white">
                         <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted">Publiée <!-- Afficher le temps écoulé depuis la création --></small>
-                            <span class="text-muted"><i class="fas fa-eye me-1"></i> <!-- Afficher le nombre de vues --></span>
+                            <small class="text-muted">Publiée <?= il_y_a($annonce["date_creation"])?></small>
+                            <span class="text-muted"><i class="fas fa-eye me-1"></i> <?= $annonce["nombre_vues"]?></span>
                         </div>
                     </div>
                 </div>
