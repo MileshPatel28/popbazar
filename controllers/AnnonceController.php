@@ -22,11 +22,6 @@ class AnnonceController
     $option_selectionner = obtenirParametre("selection");
 
     $annonces = $this -> annonce -> get_annonces();
-    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
-      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-              $option_selectionner == null;
-    });
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -45,6 +40,12 @@ class AnnonceController
         }
 
     }
+
+    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
+      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
+             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
+              $option_selectionner == null;
+    });
 
 
     $nom_categorie = "Toutes";
@@ -62,11 +63,6 @@ class AnnonceController
     $option_selectionner = obtenirParametre("selection");
 
     $annonces = $this -> annonce -> get_annonces();
-    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
-      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-              $option_selectionner == null;
-    });
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -85,6 +81,12 @@ class AnnonceController
         }
 
     }
+
+    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
+      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
+             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
+              $option_selectionner == null;
+    });
 
 
     $nom_categorie = "Toutes";
