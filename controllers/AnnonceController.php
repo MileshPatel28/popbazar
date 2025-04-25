@@ -169,10 +169,7 @@ class AnnonceController
       ,$prix,$etat);
 
     redirect('/annonces/' . $annonce -> obtenir_annonce_ajouter()["id"]);
-    
-
-    
-
+  
   }
 
 }
