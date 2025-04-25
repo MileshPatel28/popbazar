@@ -62,44 +62,53 @@ class AnnonceController
 
   // A faire filter la liste dependant de l'utilisateur et bien tester
   public function index_utilisateur(){
-    $option_selectionner = obtenirParametre("selection");
 
-    $annonces = $this -> annonce -> get_annonces();
+    if(Session::est_connecte()){
+      $option_selectionner = obtenirParametre("selection");
+      $id_utilisateur = Session::obtenir_id_utilisateur();
 
-    $nombre_totale_annonce = 0;
-    $nombre_active_annonce = 0;
-    $nombre_vendues_annonce = 0;
-
-
-    foreach($annonces as $index => $annonce){
-        $nombre_totale_annonce++;
-
-        if($annonce["est_actif"] == 1) {
-          $nombre_active_annonce++;
+      $annonces = $this -> annonce -> get_annonces();
+  
+      $nombre_totale_annonce = 0;
+      $nombre_active_annonce = 0;
+      $nombre_vendues_annonce = 0;
+  
+  
+      foreach($annonces as $index => $annonce){
+        if($id_utilisateur == $annonce["utilisateur_id"]){
+          $nombre_totale_annonce++;
+  
+          if($annonce["est_actif"] == 1) {
+            $nombre_active_annonce++;
+          }
+          
+          if($annonce["est_vendu"] == 1){
+            $nombre_vendues_annonce++;
+          }
         }
-        
-        if($annonce["est_vendu"] == 1){
-          $nombre_vendues_annonce++;
-        }
-
+      }
+  
+      $annonces = array_filter($annonces, function($annonce) use ($option_selectionner,$id_utilisateur) {
+        return (($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
+               ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
+                $option_selectionner == null) && $annonce["utilisateur_id"] == $id_utilisateur;
+      });
+  
+  
+      $nom_categorie = "Toutes";
+      
+      chargerVue('annonces/index', [
+        "nom_categorie" => $nom_categorie,
+        "annonces" => $annonces,
+        "nombre_totale_annonce" => $nombre_totale_annonce,
+        "nombre_active_annonce" => $nombre_active_annonce,
+        "nombre_vendues_annonce" => $nombre_vendues_annonce
+      ]);
+    }
+    else{
+      redirect('/');
     }
 
-    $annonces = array_filter($annonces, function($annonce) use ($option_selectionner) {
-      return ($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-             ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-              $option_selectionner == null;
-    });
-
-
-    $nom_categorie = "Toutes";
-    
-    chargerVue('annonces/index', [
-      "nom_categorie" => $nom_categorie,
-      "annonces" => $annonces,
-      "nombre_totale_annonce" => $nombre_totale_annonce,
-      "nombre_active_annonce" => $nombre_active_annonce,
-      "nombre_vendues_annonce" => $nombre_vendues_annonce
-    ]);
   }
 
 
