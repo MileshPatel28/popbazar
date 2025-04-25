@@ -177,9 +177,14 @@ class AnnonceController
 
   public function index_modifier($donnes){
 
+    require_once get_chemin_defaut('models/Categorie.php');
+
+    $categorie = new Categorie();
+
     if(Session::est_connecte()){
       chargerVue('annonces/modifier',[
-        "categorie" => $this -> annonce -> get_annouce_par_id($donnes["id"])
+        "annonce" => $this -> annonce -> get_annouce_par_id($donnes["id"]),
+        "categorie" => $categorie -> get_categorie($this -> annonce -> get_annouce_par_id($donnes["id"])["categorie_id"])
       ]);
     }
     else{
