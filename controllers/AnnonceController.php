@@ -157,7 +157,7 @@ class AnnonceController
     $id_utilisateur = Session::obtenir_id_utilisateur();
 
     $categorie = new Categorie();
-    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'));
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
 
     $titre = obtenirParametre('titre');
     $description = obtenirParametre('description');
@@ -199,6 +199,17 @@ class AnnonceController
 
 
   public function modifier(){
-    
+    var_dump("modificationey");
+    require_once get_chemin_defaut('models/Categorie.php');
+
+    $categorie = new Categorie();
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
+
+    $titre = obtenirParametre('titre');
+    $description = obtenirParametre('description');
+    $prix = obtenirParametre('prix');
+    $etat = obtenirParametre('etat');
+
+    var_dump($id_categorie,$titre,$description,$prix,$etat);
   }
 }

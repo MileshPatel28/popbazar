@@ -48,6 +48,26 @@ class Annonce
       );  
   }
 
+  public function update_annonce($annonce_id,$id_categorie,$titre,$description,$prix,$etat){
+    $this -> bd -> requete(
+        "UPDATE produits 
+        categorie_id = :categorie_id,
+        titre = :titre,
+        description = :description
+        prix = :prix,
+        etat = :etat
+        WHERE id = :id",
+        [
+          "categorie_id" => $id_categorie,
+          "titre" => $titre,
+          "description" => $description,
+          "prix" => $prix,
+          "etat" => $etat,
+          "id" => $annonce_id
+        ]
+    ) -> execute();
+  }
+
   public function obtenir_annonce_ajouter(){
     return $this -> bd -> requete(
       "SELECT * FROM produits ORDER BY id DESC"
