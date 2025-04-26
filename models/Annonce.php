@@ -68,6 +68,15 @@ class Annonce
     ) -> execute();
   }
 
+  public function supprimer_annonce($annonce_id){
+    $this -> bd -> requete(
+      "DELETE FROM produits WHERE id = :id",
+      [
+        "id" => $annonce_id
+      ]
+    ) -> execute();
+  }
+
   public function obtenir_annonce_ajouter(){
     return $this -> bd -> requete(
       "SELECT * FROM produits ORDER BY id DESC"

@@ -199,7 +199,6 @@ class AnnonceController
 
 
   public function modifier($donnes){
-    var_dump("modificationey");
     require_once get_chemin_defaut('models/Categorie.php');
 
     $id_annonce = intval($donnes["id"]);
@@ -214,5 +213,12 @@ class AnnonceController
 
     $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
     redirect('/annonces/' . $id_annonce);
+  }
+
+
+  public function supprimer($donnes){
+    $id_annonce = intval($donnes["id"]);
+    $this -> annonce -> supprimer_annonce($id_annonce);
+    redirect('/annonces');
   }
 }

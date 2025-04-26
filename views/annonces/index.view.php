@@ -77,7 +77,7 @@ chargerVuePartielle('_nav');
                                 </li>
                                 <li>
 
-                                    <form method="POST" action="/annonces/<!-- ID du produit -->/supprimer">
+                                    <form method="POST" action="/annonces/<?=$annonce["id"] ?>/supprimer">
                                         <button class="dropdown-item text-danger" type="submit"><i class="fas fa-trash-alt me-2"></i>Supprimer</button>
                                     </form>
                             </ul>
