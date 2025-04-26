@@ -198,9 +198,11 @@ class AnnonceController
   }
 
 
-  public function modifier(){
+  public function modifier($donnes){
     var_dump("modificationey");
     require_once get_chemin_defaut('models/Categorie.php');
+
+    $id_annonce = intval($donnes["id"]);
 
     $categorie = new Categorie();
     $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
@@ -210,6 +212,7 @@ class AnnonceController
     $prix = obtenirParametre('prix');
     $etat = obtenirParametre('etat');
 
-    var_dump($id_categorie,$titre,$description,$prix,$etat);
+    $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
+    redirect('/annonces/' . $id_annonce);
   }
 }
