@@ -219,7 +219,16 @@ class AnnonceController
 
   public function supprimer($donnes){
     $id_annonce = intval($donnes["id"]);
-    $this -> annonce -> supprimer_annonce($id_annonce);
-    redirect('/annonces');
+    $annonce = $this -> annonce -> get_annouce_par_id($id_annonce);
+
+    if($annonce["utilisateur_id"] == Session::obtenir_id_utilisateur()){
+      $this -> annonce -> supprimer_annonce($id_annonce);
+      redirect('/annonces');
+    }
+    else{
+      redirect('/mes-annonces');
+      Session::set_flash("L'annonce n'a pas pu être supprimée.",'error');
+    }
+
   }
 }
