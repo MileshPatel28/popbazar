@@ -49,7 +49,7 @@ class Session
    */
   public static function est_connecte()
   {
-    return false; // isset($_SESSION['id_utilisateur']);
+    return true; // isset($_SESSION['id_utilisateur']);
   }
 
   /**

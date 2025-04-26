@@ -157,7 +157,7 @@ class AnnonceController
     $id_utilisateur = Session::obtenir_id_utilisateur();
 
     $categorie = new Categorie();
-    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'));
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
 
     $titre = obtenirParametre('titre');
     $description = obtenirParametre('description');
@@ -173,4 +173,46 @@ class AnnonceController
   
   }
 
+
+
+  public function index_modifier($donnes){
+
+    require_once get_chemin_defaut('models/Categorie.php');
+
+    $categorie = new Categorie();
+
+    if(Session::est_connecte() && Session::obtenir_id_utilisateur() == $this -> annonce -> get_annouce_par_id($donnes["id"])["utilisateur_id"]){
+      chargerVue('annonces/modifier',[
+        "annonce" => $this -> annonce -> get_annouce_par_id($donnes["id"]),
+        "categorie" => $categorie -> get_categorie($this -> annonce -> get_annouce_par_id($donnes["id"])["categorie_id"])
+      ]);
+    }
+    else if(Session::est_connecte()){
+      redirect('/');
+      Session::set_flash("Vous n'êtes pas autorisé à modifier cette annonce.");
+    }
+    else{
+      redirect('/connexion');
+      Session::set_flash("Vous devez être connecté pour modifier une annonce.");
+    }
+  }
+
+
+  public function modifier($donnes){
+    var_dump("modificationey");
+    require_once get_chemin_defaut('models/Categorie.php');
+
+    $id_annonce = intval($donnes["id"]);
+
+    $categorie = new Categorie();
+    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
+
+    $titre = obtenirParametre('titre');
+    $description = obtenirParametre('description');
+    $prix = obtenirParametre('prix');
+    $etat = obtenirParametre('etat');
+
+    $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
+    redirect('/annonces/' . $id_annonce);
+  }
 }

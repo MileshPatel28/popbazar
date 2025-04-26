@@ -23,7 +23,7 @@ chargerVuePartielle('_nav');
     <h1 class="form-title"><i class="fas fa-edit me-2"></i>Modifier votre annonce</h1>
     <p class="text-muted mb-4">Mettez à jour les informations de votre annonce pour la communauté PopBazaar.</p>
 
-    <form method="POST" action="/annonces/<!-- ID de l'annonce -->">
+    <form method="POST" action="/annonces/<?= $annonce["id"] ?>">
       <!-- Catégorie Section -->
       <div class="form-section">
         <h3 class="form-section-title">
@@ -32,11 +32,40 @@ chargerVuePartielle('_nav');
         </h3>
         <p class="text-muted mb-3">Sélectionnez la catégorie qui correspond le mieux à votre produit</p>
 
-        <input type="hidden" id="categorie" name="categorie" value="<!-- Nom de la catégorie -->">
+        <input type="hidden" id="categorie" name="categorie" value="<?= $categorie["nom"]?>">
 
         <div class="row g-3">
           <!-- Cartes de catégorie -->
           <!-- Même structure conservée -->
+          <div class="row g-3">
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-gamepad"></i>
+              <h5>Jeux vidéo</h5>
+              <p class="mb-0 small text-muted">Consoles, jeux, accessoires</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-mask"></i>
+              <h5>Super-héros</h5>
+              <p class="mb-0 small text-muted">Figurines, comics, costumes</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-film"></i>
+              <h5>Films cultes</h5>
+              <p class="mb-0 small text-muted">DVDs, affiches, objets</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="category-card" onclick="selectCategory(this)">
+              <i class="fas fa-tv"></i>
+              <h5>Séries TV</h5>
+              <p class="mb-0 small text-muted">Coffrets, produits dérivés</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -49,13 +78,13 @@ chargerVuePartielle('_nav');
 
         <div class="mb-3">
           <label for="title" class="form-label">Titre de l'annonce <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="title" value="<!-- titre -->" name="titre" required>
+          <input type="text" class="form-control" id="title" value="<?= $annonce["titre"]?>" name="titre" required>
           <div class="form-text">Soyez précis et concis (max. 70 caractères)</div>
         </div>
 
         <div class="mb-3">
           <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
-          <textarea class="form-control" id="description" rows="5" name="description" required><!-- description --></textarea>
+          <textarea class="form-control" id="description" rows="5" name="description" required><?= $annonce["description"]?></textarea>
           <div class="form-text">Minimum 30 caractères, évitez d'inclure vos coordonnées personnelles</div>
         </div>
 
@@ -63,16 +92,24 @@ chargerVuePartielle('_nav');
           <div class="col-md-6 mb-3">
             <label for="prix" class="form-label">Prix ($) <span class="text-danger">*</span></label>
             <div class="input-group">
-              <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" value="<!-- prix -->" required>
+              <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" value="<?= $annonce["prix"]?>" required>
               <span class="input-group-text">$</span>
             </div>
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label">État du produit <span class="text-danger">*</span></label>
-            <input type="hidden" id="etat" name="etat" value="<!-- etat -->">
+            <input type="hidden" id="etat" name="etat" value="<?= $annonce["etat"] ?>">
             <div>
               <!-- Boutons d’état -->
+                <input type="hidden" id="etat" name="etat" value="Neuf">
+                <div>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">Neuf</button>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">Comme neuf</button>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">Très bon état</button>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">Bon état</button>
+                  <button type="button" class="condition-btn" onclick="selectCondition(this)">État moyen</button>
+                </div>
             </div>
           </div>
         </div>
@@ -110,8 +147,8 @@ chargerVuePartielle('_nav');
 </div>
 
 <!-- Formulaires cachés pour suppression et vente -->
-<form id="form-supprimer" method="POST" action="/annonces/<!-- ID -->/supprimer" style="display:none;"></form>
-<form id="form-vendue" method="POST" action="/annonces/<!-- ID -->" style="display:none;">
+<form id="form-supprimer" method="POST" action="/annonces/<?= $annonce["id"]?>/supprimer" style="display:none;"></form>
+<form id="form-vendue" method="POST" action="/annonces/<?= $annonce["id"]?>" style="display:none;">
   <input type="hidden" name="est_vendu" value="1">
 </form>
 
@@ -125,7 +162,7 @@ chargerVuePartielle('_nav');
       </div>
       <div class="modal-body">
         <p>Êtes-vous sûr de vouloir supprimer cette annonce ? Cette action est irréversible.</p>
-        <p class="fw-bold"><!-- Titre de l'annonce --></p>
+        <p class="fw-bold"><?= $annonce["titre"]?></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -145,7 +182,7 @@ chargerVuePartielle('_nav');
       </div>
       <div class="modal-body">
         <p>Félicitations pour votre vente ! Voulez-vous marquer cette annonce comme vendue ?</p>
-        <p class="fw-bold"><!-- Titre de l'annonce --></p>
+        <p class="fw-bold"><?= $annonce["titre"]?></p>
         <p class="text-muted">L'annonce sera conservée dans votre historique mais ne sera plus visible par les autres utilisateurs.</p>
       </div>
       <div class="modal-footer">
