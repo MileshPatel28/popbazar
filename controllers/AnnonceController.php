@@ -206,7 +206,8 @@ class AnnonceController
     $est_vendu = obtenirParametre('est_vendu');
 
     if(isset($est_vendu) && $est_vendu == 1){
-      var_dump($est_vendu);
+
+      $this -> annonce -> update_annonce_vendues($id_annonce,$est_vendu);
 
       redirect('/annonces/' . $id_annonce);
     }
