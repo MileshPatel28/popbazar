@@ -224,6 +224,7 @@ class AnnonceController
     if($annonce["utilisateur_id"] == Session::obtenir_id_utilisateur()){
       $this -> annonce -> supprimer_annonce($id_annonce);
       redirect('/annonces');
+      Session::set_flash("Annonce supprimée avec succès.");
     }
     else{
       redirect('/mes-annonces');
