@@ -102,7 +102,8 @@ class AnnonceController
         "annonces" => $annonces,
         "nombre_totale_annonce" => $nombre_totale_annonce,
         "nombre_active_annonce" => $nombre_active_annonce,
-        "nombre_vendues_annonce" => $nombre_vendues_annonce
+        "nombre_vendues_annonce" => $nombre_vendues_annonce,
+        "id_utilisateur" => $id_utilisateur
       ]);
     }
     else{
@@ -199,7 +200,6 @@ class AnnonceController
 
 
   public function modifier($donnes){
-    var_dump("modificationey");
     require_once get_chemin_defaut('models/Categorie.php');
 
     $id_annonce = intval($donnes["id"]);
@@ -214,5 +214,22 @@ class AnnonceController
 
     $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
     redirect('/annonces/' . $id_annonce);
+  }
+
+
+  public function supprimer($donnes){
+    $id_annonce = intval($donnes["id"]);
+    $annonce = $this -> annonce -> get_annouce_par_id($id_annonce);
+
+    if($annonce != null && $annonce["utilisateur_id"] == Session::obtenir_id_utilisateur()){
+      $this -> annonce -> supprimer_annonce($id_annonce);
+      redirect('/annonces');
+      Session::set_flash("Annonce supprimée avec succès.");
+    }
+    else{
+      redirect('/mes-annonces');
+      Session::set_flash("L'annonce n'a pas pu être supprimée.",'error');
+    }
+
   }
 }

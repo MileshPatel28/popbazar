@@ -72,14 +72,16 @@ chargerVuePartielle('_nav');
 
 
                                 </li>
+                                <?php if(isset($id_utilisateur)){?>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+                                
                                 <li>
-
-                                    <form method="POST" action="/annonces/<!-- ID du produit -->/supprimer">
+                                    <form method="POST" action="/annonces/<?=$annonce["id"] ?>/supprimer">
                                         <button class="dropdown-item text-danger" type="submit"><i class="fas fa-trash-alt me-2"></i>Supprimer</button>
                                     </form>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
