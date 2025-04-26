@@ -203,17 +203,29 @@ class AnnonceController
     require_once get_chemin_defaut('models/Categorie.php');
 
     $id_annonce = intval($donnes["id"]);
+    $est_vendu = obtenirParametre('est_vendu');
 
-    $categorie = new Categorie();
-    $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
+    if(isset($est_vendu) && $est_vendu == 1){
+      var_dump($est_vendu);
 
-    $titre = obtenirParametre('titre');
-    $description = obtenirParametre('description');
-    $prix = obtenirParametre('prix');
-    $etat = obtenirParametre('etat');
+      redirect('/annonces/' . $id_annonce);
+    }
+    else{
 
-    $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
-    redirect('/annonces/' . $id_annonce);
+      $categorie = new Categorie();
+      $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
+  
+      $titre = obtenirParametre('titre');
+      $description = obtenirParametre('description');
+      $prix = obtenirParametre('prix');
+      $etat = obtenirParametre('etat');
+  
+      $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
+      redirect('/annonces/' . $id_annonce);
+    }
+
+
+
   }
 
 
