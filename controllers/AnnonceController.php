@@ -224,9 +224,6 @@ class AnnonceController
       $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
       redirect('/annonces/' . $id_annonce);
     }
-
-
-
   }
 
 
