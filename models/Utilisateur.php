@@ -16,4 +16,14 @@ class Utilisateur
 
     $this->bd = new Database($config); // Instance de la classe Database
   }
+
+
+  public function obtenir_utilisateur_id($id_utilisateur){
+    return $this -> bd -> requete(
+      "SELECT * FROM utilisateurs WHERE id = :id",
+      [
+        "id" => $id_utilisateur
+      ]
+    ) -> fetch();
+  }
 }
