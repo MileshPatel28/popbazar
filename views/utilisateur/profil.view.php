@@ -29,7 +29,7 @@ chargerVuePartielle('_nav');
             <i class="fas fa-camera"></i>
           </button>
         </div>
-        <h3 class="mb-1"><!-- Nom d'utilisateur à afficher --></h3>
+        <h3 class="mb-1"><?= $utilisateur["nom_utilisateur"]?></h3>
         <p class="text-muted mb-3"><!-- Date d'inscription à afficher --></p>
         <div class="mb-3">
           <div class="rating-stars mb-1">
