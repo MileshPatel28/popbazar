@@ -43,6 +43,7 @@
         </div>
       </form>
       <!-- Si l'utilisateur est connecté : -->
+      <?php if(Session::est_connecte()) {?>
       <div class="d-flex align-items-center">
         <div class="dropdown">
           <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
@@ -64,11 +65,15 @@
           </ul>
         </div>
       </div>
+      <?php }
+      else {
+      ?>
       <!-- Sinon (utilisateur non connecté) : -->
       <div class="d-flex align-items-center">
         <a href="#" class="btn btn-dark me-2">Se connecter</a>
         <a href="#" class="btn btn-dark">S'inscrire</a>
       </div>
+      <?php } ?>
       <!-- Fin condition -->
     </div>
   </div>
