@@ -29,8 +29,8 @@ chargerVuePartielle('_nav');
             <i class="fas fa-camera"></i>
           </button>
         </div>
-        <h3 class="mb-1"><!-- Nom d'utilisateur à afficher --></h3>
-        <p class="text-muted mb-3"><!-- Date d'inscription à afficher --></p>
+        <h3 class="mb-1"><?= $utilisateur["nom_utilisateur"]?></h3>
+        <p class="text-muted mb-3"> <?= membre_depuis($utilisateur["date_creation"]) ?></p>
         <div class="mb-3">
           <div class="rating-stars mb-1">
             <i class="fas fa-star"></i>
@@ -83,19 +83,23 @@ chargerVuePartielle('_nav');
             <div id="profile-view">
               <div class="row mb-3">
                 <div class="col-md-4 fw-bold">Nom d'utilisateur:</div>
-                <div class="col-md-8"><!-- Nom d'utilisateur à afficher --></div>
+                <div class="col-md-8"><?= $utilisateur["nom_utilisateur"]?></div>
               </div>
               <div class="row mb-3">
                 <div class="col-md-4 fw-bold">Nom complet:</div>
-                <div class="col-md-8"><!-- Prénom et nom à afficher --></div>
+                <div class="col-md-8"><?= $utilisateur["prenom"] . " " . $utilisateur["nom"]?></div>
               </div>
               <div class="row mb-3">
                 <div class="col-md-4 fw-bold">Email:</div>
-                <div class="col-md-8"><!-- Email à afficher --></div>
+                <div class="col-md-8"><?= $utilisateur["email"]?></div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 fw-bold">Téléphone:</div>
+                <div class="col-md-8"><?= $utilisateur["telephone"]?> </div>
               </div>
               <div class="row mb-3">
                 <div class="col-md-4 fw-bold">Bio:</div>
-                <div class="col-md-8">Passionné de jeux vidéo et de culture pop. Collectionneur de figurines Nintendo et produits dérivés de cinéma.</div>
+                <div class="col-md-8"><?= $utilisateur["bio"]?> </div>
               </div>
             </div>
 
