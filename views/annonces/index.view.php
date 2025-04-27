@@ -61,6 +61,9 @@ chargerVuePartielle('_nav');
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>"><i class="fas fa-eye me-2"></i>Voir</a></li>
+
+                                <?php if(isset($id_utilisateur)){?>
+                                <?php   if($id_utilisateur == $annonce["utilisateur_id"]) { ?>
                                 <li><a class="dropdown-item" href="/annonces/<?=$annonce["id"]?>/modifier"><i class="fas fa-edit me-2"></i>Modifier</a></li>
                                 <li>
 
@@ -72,7 +75,7 @@ chargerVuePartielle('_nav');
 
 
                                 </li>
-                                <?php if(isset($id_utilisateur)){?>
+                                <?php } ?>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

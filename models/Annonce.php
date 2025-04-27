@@ -68,6 +68,18 @@ class Annonce
     ) -> execute();
   }
 
+  public function update_annonce_vendues($annonce_id,$est_vendu){
+    $this -> bd -> requete(
+      "UPDATE produits SET
+      est_vendu = :est_vendu
+      WHERE id = :id",
+      [
+        "est_vendu" => $est_vendu,
+        "id" => $annonce_id
+      ]
+    ) -> execute();
+  }
+
   public function supprimer_annonce($annonce_id){
     $this -> bd -> requete(
       "DELETE FROM produits WHERE id = :id",
