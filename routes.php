@@ -30,4 +30,4 @@ $routeur->post("/annonces/{id}/supprimer","AnnonceController@supprimer");
 
 $routeur->get("/connexion","UtilisateurController@connexion");
 
-// $routeur->get("");
+$routeur->get("/profil","ProfilController@afficher");

@@ -48,12 +48,12 @@
         <div class="dropdown">
           <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
             <img src="/assets/images/placeholders/40x40.png" class="rounded-circle me-2" alt="Avatar" style="width: 32px; height: 32px; object-fit: cover;">
-            <span><!-- Nom d'utilisateur à afficher --></span>
+            <span><?php Session::obtenir_nom_utilisateur() ?></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Mon profil</a></li>
+            <li><a class="dropdown-item" href="/profil"><i class="fas fa-user me-2"></i> Mon profil</a></li>
             <li><a class="dropdown-item" href="#"><i class="fas fa-heart me-2"></i> Mes favoris</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fas fa-tag me-2"></i> Mes annonces</a></li>
+            <li><a class="dropdown-item" href="/mes-annonces"><i class="fas fa-tag me-2"></i> Mes annonces</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
