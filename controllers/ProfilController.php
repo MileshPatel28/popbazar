@@ -12,7 +12,7 @@ class ProfilController
   public function afficher($params)
   {
     if(Session::est_connecte()){
-      var_dump('profil');
+      chargerVue("utilisateur/profil");
     }
     else{
       redirect('/connexion');
