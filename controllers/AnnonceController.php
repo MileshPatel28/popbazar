@@ -20,8 +20,11 @@ class AnnonceController
   public function index_defaut(){
 
     $option_selectionner = obtenirParametre("selection");
-
+    
+    $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
     $annonces = $this -> annonce -> get_annonces();
+    $annonces_page = $this -> annonce -> get_annonces($page);
+
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -53,9 +56,12 @@ class AnnonceController
     chargerVue('annonces/index', [
       "nom_categorie" => $nom_categorie,
       "annonces" => $annonces,
+      "annonces_page" => $annonces_page,
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
-      "nombre_vendues_annonce" => $nombre_vendues_annonce
+      "nombre_vendues_annonce" => $nombre_vendues_annonce,
+      "page" => $page,
+      "selection" => $option_selectionner
     ]);
   }
 
@@ -64,11 +70,16 @@ class AnnonceController
   public function index_utilisateur(){
 
     if(Session::est_connecte()){
-      $option_selectionner = obtenirParametre("filter");
       $id_utilisateur = Session::obtenir_id_utilisateur();
 
-      $annonces = $this -> annonce -> get_annonces();
-  
+      $option_selectionner = obtenirParametre("filter");
+      $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
+
+
+      $annonces = $this -> annonce -> get_annonces_utilisateur($id_utilisateur);
+      $annonces_page = $this -> annonce -> get_annonces($id_utilisateur,$page);
+
+    
       $nombre_totale_annonce = 0;
       $nombre_active_annonce = 0;
       $nombre_vendues_annonce = 0;
@@ -88,11 +99,6 @@ class AnnonceController
         }
       }
   
-      $annonces = array_filter($annonces, function($annonce) use ($option_selectionner,$id_utilisateur) {
-        return (($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-               ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-                $option_selectionner == null) && $annonce["utilisateur_id"] == $id_utilisateur;
-      });
   
   
       $nom_categorie = "Toutes";
@@ -100,10 +106,13 @@ class AnnonceController
       chargerVue('annonces/index', [
         "nom_categorie" => $nom_categorie,
         "annonces" => $annonces,
+        "annonces_page" => $annonces_page,
         "nombre_totale_annonce" => $nombre_totale_annonce,
         "nombre_active_annonce" => $nombre_active_annonce,
         "nombre_vendues_annonce" => $nombre_vendues_annonce,
-        "id_utilisateur" => $id_utilisateur
+        "id_utilisateur" => $id_utilisateur,
+        "page" => $page,
+        "filter" => $option_selectionner
       ]);
     }
     else{

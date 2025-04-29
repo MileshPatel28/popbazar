@@ -19,10 +19,32 @@ class Annonce
   }
 
 
-  public function get_annonces(){
-      return $this -> bd -> requete(
-        'SELECT * FROM produits'
-      ) -> fetchAll();
+  public function get_annonces($page = -1){
+    if ($page != -1) {
+      return $this->bd->requete(
+        'SELECT * FROM produits 
+        ORDER BY id LIMIT 9 OFFSET ' . ($page*9)
+      )->fetchAll();
+    }
+
+    return $this->bd->requete(
+      'SELECT * FROM produits'
+    )->fetchAll();
+  }
+
+  public function get_annonces_utilisateur($id_utilisateur,$page = -1){
+    if ($page != -1) {
+      return $this->bd->requete(
+        'SELECT * FROM produits WHERE utilisateur_id = :utilisateur_id
+        ORDER BY id LIMIT 9 OFFSET ' . ($page*9),
+        ["utilisateur_id" => $id_utilisateur]
+      )->fetchAll();
+    }
+
+    return $this->bd->requete(
+      'SELECT * FROM produits WHERE utilisateur_id = :utilisateur_id',
+      ["utilisateur_id" => $id_utilisateur]
+    )->fetchAll();
   }
 
   public function get_annouce_par_id($id_categorie){
@@ -31,6 +53,8 @@ class Annonce
       ["id" => $id_categorie]
     ) -> fetch();
   }
+
+  
 
   public function ajout_annonce($utilisateur_id,$id_categorie,$titre,$description,$prix,$etat){
       

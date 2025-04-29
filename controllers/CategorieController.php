@@ -17,8 +17,10 @@ class CategorieController
   }
 
   public function index($param){
-
+    $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
     $annonces = $this -> categorie -> get_annonces($param["id"]);
+    $annonces_page = $this -> categorie -> get_annonces($param["id"],$page);
+
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -38,9 +40,11 @@ class CategorieController
     chargerVue('annonces/index', [
       "nom_categorie" => $this -> categorie -> get_categorie($param["id"])["nom"],
       "annonces" => $annonces,
+      "annonces_page" => $annonces_page,
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
-      "nombre_vendues_annonce" => $nombre_vendues_annonce
+      "nombre_vendues_annonce" => $nombre_vendues_annonce,
+      "page" => $page
     ]);
   }
 }

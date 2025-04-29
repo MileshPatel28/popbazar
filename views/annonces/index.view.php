@@ -46,7 +46,7 @@ chargerVuePartielle('_nav');
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
         <!-- Pour chaque annonce -->
-        <?php foreach ($annonces as $index => $annonce) { ?>
+        <?php foreach ($annonces_page as $index => $annonce) { ?>
             
             <!-- Listings -->
             <div class="col-md-6 col-lg-4">
@@ -133,20 +133,21 @@ chargerVuePartielle('_nav');
         <ul class="pagination justify-content-center">
 
             <!-- Lien vers la page précédente -->
-            <li class="page-item <!-- Afficher "disabled" si c'est la première page -->">
-                <a class="page-link" href="?page=<!-- Numéro de page - 1 --><!-- Ajouter le paramètre de sélection si présent -->" tabindex="-1" aria-disabled="<!-- true si première page, sinon false -->">Précédent</a>
+            <li class="page-item <?= ($page == 1) ? 'disabled' : '' ?>" >
+                <a class="page-link" href="?page=<?= $page - 1 ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>" tabindex="-1" aria-disabled="<?= ($page == 1) ? true : false ?>">Précédent</a>
             </li>
 
             <!-- Liens pour chaque page -->
+            <?php for($i = 1; $i <= count($annonces) / 9; $i++){ ?>
             <!-- Boucle pour chaque page -->
-                <li class="page-item <!-- Afficher "active" si c'est la page courante -->">
-                    <a class="page-link" href="?page=<!-- Numéro de page --><!-- Ajouter le paramètre de sélection si présent -->"><!-- Numéro de page --></a>
+                <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
+                    <a class="page-link" href="?page=<?= $i ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>"><?= $i ?></a>
                 </li>
             <!-- Fin de la boucle -->
-
+            <?php } ?>
             <!-- Lien vers la page suivante -->
-            <li class="page-item <!-- Afficher "disabled" si c'est la dernière page -->">
-                <a class="page-link" href="?page=<!-- Numéro de page + 1 --><!-- Ajouter le paramètre de sélection si présent -->" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
+            <li class="page-item <?= ($page == $i - 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="?page=<?= $page + 1 ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
             </li>
 
         </ul>

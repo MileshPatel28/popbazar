@@ -25,7 +25,15 @@ class Categorie
     ) -> fetch();
   }
 
-  public function get_annonces($id_categorie){
+  public function get_annonces($id_categorie,$page = -1){
+    if($page != -1){
+      return $this -> bd -> requete(
+        'SELECT * FROM produits WHERE categorie_id = :id
+        ORDER BY id LIMIT 9 OFFSET ' . ($page*9),
+        ["id" => $id_categorie]
+      ) -> fetchAll();
+    }
+
     return $this -> bd -> requete(
       'SELECT * FROM produits WHERE categorie_id = :id',
       ["id" => $id_categorie]
