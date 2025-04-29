@@ -49,7 +49,7 @@ class Session
    */
   public static function est_connecte()
   {
-    return true; // isset($_SESSION['id_utilisateur']);
+    return isset($_SESSION['id_utilisateur']);
   }
 
   /**
@@ -83,7 +83,7 @@ class Session
    */
   public static function obtenir_id_utilisateur()
   {
-    return 2; //$_SESSION["id_utilisateur"]["id"] ?? null;
+    return $_SESSION["id_utilisateur"]["id"] ?? null;
   }
 
 

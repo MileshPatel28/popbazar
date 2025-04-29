@@ -21,5 +21,9 @@ class UtilisateurController
   public function connexion(){
     chargerVue("/utilisateur/connexion");
   }
+
+  public function inscription(){
+    chargerVue("/utilisateur/inscription");
+  }
  
 }

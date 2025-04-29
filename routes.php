@@ -29,5 +29,7 @@ $routeur->post("/annonces/{id}","AnnonceController@modifier");
 $routeur->post("/annonces/{id}/supprimer","AnnonceController@supprimer");
 
 $routeur->get("/connexion","UtilisateurController@connexion");
+$routeur->get("/inscription","UtilisateurController@inscription");
+
 
 $routeur->get("/profil","ProfilController@afficher");

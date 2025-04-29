@@ -70,8 +70,8 @@
       ?>
       <!-- Sinon (utilisateur non connecté) : -->
       <div class="d-flex align-items-center">
-        <a href="#" class="btn btn-dark me-2">Se connecter</a>
-        <a href="#" class="btn btn-dark">S'inscrire</a>
+        <a href="/connexion" class="btn btn-dark me-2">Se connecter</a>
+        <a href="/inscription" class="btn btn-dark">S'inscrire</a>
       </div>
       <?php } ?>
       <!-- Fin condition -->
