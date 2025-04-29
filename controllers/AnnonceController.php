@@ -108,7 +108,8 @@ class AnnonceController
         "nombre_active_annonce" => $nombre_active_annonce,
         "nombre_vendues_annonce" => $nombre_vendues_annonce,
         "id_utilisateur" => $id_utilisateur,
-        "page" => $page
+        "page" => $page,
+        "selection" => $option_selectionner
       ]);
     }
     else{

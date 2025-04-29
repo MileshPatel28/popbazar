@@ -133,21 +133,21 @@ chargerVuePartielle('_nav');
         <ul class="pagination justify-content-center">
 
             <!-- Lien vers la page précédente -->
-            <li class="page-item <!-- Afficher "disabled" si c'est la première page -->">
-                <a class="page-link" href="?page=<!-- Numéro de page - 1 --><!-- Ajouter le paramètre de sélection si présent -->" tabindex="-1" aria-disabled="<!-- true si première page, sinon false -->">Précédent</a>
+            <li class="page-item <?= ($page == 1) ? 'disabled' : '' ?>" >
+                <a class="page-link" href="?page=<?= $page - 1 ?><!-- Ajouter le paramètre de sélection si présent -->" tabindex="-1" aria-disabled="<!-- true si première page, sinon false -->">Précédent</a>
             </li>
 
             <!-- Liens pour chaque page -->
-            <?php for($i = 0; $i <= count($annonces) / 9; $i++){ ?>
+            <?php for($i = 1; $i <= count($annonces) / 9; $i++){ ?>
             <!-- Boucle pour chaque page -->
-                <li class="page-item <!-- Afficher "active" si c'est la page courante -->">
-                    <a class="page-link" href="?page=<?= $i ?><!-- Ajouter le paramètre de sélection si présent -->"><?= $i + 1 ?></a>
+                <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
+                    <a class="page-link" href="?page=<?= $i ?><!-- Ajouter le paramètre de sélection si présent -->"><?= $i ?></a>
                 </li>
             <!-- Fin de la boucle -->
             <?php } ?>
             <!-- Lien vers la page suivante -->
-            <li class="page-item <!-- Afficher "disabled" si c'est la dernière page -->">
-                <a class="page-link" href="?page=<!-- Numéro de page + 1 --><!-- Ajouter le paramètre de sélection si présent -->" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
+            <li class="page-item <?= ($page == $i - 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="?page=<?= $page + 1 ?><!-- Ajouter le paramètre de sélection si présent -->" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
             </li>
 
         </ul>
