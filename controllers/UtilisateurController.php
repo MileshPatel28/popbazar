@@ -18,11 +18,11 @@ class UtilisateurController
   }
 
 
-  public function connexion(){
+  public function connexion_index(){
     chargerVue("/utilisateur/connexion");
   }
 
-  public function inscription(){
+  public function inscription_index(){
     chargerVue("/utilisateur/inscription");
   }
  
