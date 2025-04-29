@@ -43,13 +43,18 @@ class UtilisateurController
 
 
     if($bin_connexion){
-      var_dump("connecté!!");
       Session::set('id_utilisateur',$utilisateur);
       redirect("/");
     }
     else{
       redirect("/connexion");
     }
+  }
+
+  public function deconnexion(){
+    Session::detruire();
+    Session::demarrer();
+    redirect("/");
   }
 
 

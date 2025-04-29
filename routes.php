@@ -32,6 +32,7 @@ $routeur->get("/connexion","UtilisateurController@connexion_index");
 $routeur->get("/inscription","UtilisateurController@inscription_index");
 
 $routeur->post("/connexion","UtilisateurController@connexion");
+$routeur->post("/deconnexion","UtilisateurController@deconnexion");
 
 
 $routeur->get("/profil","ProfilController@afficher");
