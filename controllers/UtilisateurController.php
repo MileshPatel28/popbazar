@@ -18,17 +18,18 @@ class UtilisateurController
   }
 
   public function connexion_index(){
+    Session::deja_connecte();
     chargerVue("/utilisateur/connexion");
   }
 
   public function inscription_index(){
+    Session::deja_connecte();
     chargerVue("/utilisateur/inscription");
   }
 
   
   
   public function connexion(){
-
     $bin_connexion = true;
 
     $email = obtenirParametre('email');
@@ -43,6 +44,8 @@ class UtilisateurController
 
     if($bin_connexion){
       var_dump("connecté!!");
+      Session::set('id_utilisateur',$utilisateur);
+      redirect("/");
     }
     else{
       redirect("/connexion");
