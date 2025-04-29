@@ -19,6 +19,7 @@ class CategorieController
   public function index($param){
 
     $annonces = $this -> categorie -> get_annonces($param["id"]);
+    $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -40,7 +41,8 @@ class CategorieController
       "annonces" => $annonces,
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
-      "nombre_vendues_annonce" => $nombre_vendues_annonce
+      "nombre_vendues_annonce" => $nombre_vendues_annonce,
+      "page" => $page
     ]);
   }
 }

@@ -141,7 +141,7 @@ chargerVuePartielle('_nav');
             <?php for($i = 0; $i <= count($annonces) / 9; $i++){ ?>
             <!-- Boucle pour chaque page -->
                 <li class="page-item <!-- Afficher "active" si c'est la page courante -->">
-                    <a class="page-link" href="?page=<!-- Numéro de page --><!-- Ajouter le paramètre de sélection si présent -->"><?= $i + 1 ?></a>
+                    <a class="page-link" href="?page=<?= $i ?><!-- Ajouter le paramètre de sélection si présent -->"><?= $i + 1 ?></a>
                 </li>
             <!-- Fin de la boucle -->
             <?php } ?>

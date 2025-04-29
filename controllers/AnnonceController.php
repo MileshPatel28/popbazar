@@ -20,6 +20,7 @@ class AnnonceController
   public function index_defaut(){
 
     $option_selectionner = obtenirParametre("selection");
+    $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
 
     $annonces = $this -> annonce -> get_annonces();
 
@@ -55,7 +56,8 @@ class AnnonceController
       "annonces" => $annonces,
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
-      "nombre_vendues_annonce" => $nombre_vendues_annonce
+      "nombre_vendues_annonce" => $nombre_vendues_annonce,
+      "page" => $page 
     ]);
   }
 
@@ -65,6 +67,8 @@ class AnnonceController
 
     if(Session::est_connecte()){
       $option_selectionner = obtenirParametre("filter");
+      $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
+
       $id_utilisateur = Session::obtenir_id_utilisateur();
 
       $annonces = $this -> annonce -> get_annonces();
@@ -103,7 +107,8 @@ class AnnonceController
         "nombre_totale_annonce" => $nombre_totale_annonce,
         "nombre_active_annonce" => $nombre_active_annonce,
         "nombre_vendues_annonce" => $nombre_vendues_annonce,
-        "id_utilisateur" => $id_utilisateur
+        "id_utilisateur" => $id_utilisateur,
+        "page" => $page
       ]);
     }
     else{
