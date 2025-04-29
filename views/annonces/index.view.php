@@ -46,7 +46,7 @@ chargerVuePartielle('_nav');
     <div class="row">
         <!-- Boucle pour afficher toutes les annonces -->
         <!-- Pour chaque annonce -->
-        <?php foreach ($annonces as $index => $annonce) { ?>
+        <?php foreach ($annonces_page as $index => $annonce) { ?>
             
             <!-- Listings -->
             <div class="col-md-6 col-lg-4">
