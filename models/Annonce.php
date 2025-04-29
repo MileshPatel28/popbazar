@@ -19,10 +19,17 @@ class Annonce
   }
 
 
-  public function get_annonces(){
-      return $this -> bd -> requete(
-        'SELECT * FROM produits'
-      ) -> fetchAll();
+  public function get_annonces($page = -1){
+    if ($page != -1) {
+      return $this->bd->requete(
+        'SELECT * FROM produits 
+        ORDER BY id LIMIT 9 OFFSET ' . ($page*9)
+      )->fetchAll();
+    }
+
+    return $this->bd->requete(
+      'SELECT * FROM produits'
+    )->fetchAll();
   }
 
   public function get_annouce_par_id($id_categorie){

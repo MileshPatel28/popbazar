@@ -20,9 +20,11 @@ class AnnonceController
   public function index_defaut(){
 
     $option_selectionner = obtenirParametre("selection");
+    
     $page = (obtenirParametre("page") == null) ? 1 : obtenirParametre("page");
-
     $annonces = $this -> annonce -> get_annonces();
+    $annonces_page = $this -> annonce -> get_annonces($page);
+
 
     $nombre_totale_annonce = 0;
     $nombre_active_annonce = 0;
@@ -54,6 +56,7 @@ class AnnonceController
     chargerVue('annonces/index', [
       "nom_categorie" => $nom_categorie,
       "annonces" => $annonces,
+      "annonces_page" => $annonces_page,
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
       "nombre_vendues_annonce" => $nombre_vendues_annonce,
