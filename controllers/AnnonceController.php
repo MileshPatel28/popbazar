@@ -99,17 +99,6 @@ class AnnonceController
         }
       }
   
-      // $annonces = array_filter($annonces, function($annonce) use ($option_selectionner,$id_utilisateur) {
-      //   return (($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-      //          ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-      //           $option_selectionner == null) && $annonce["utilisateur_id"] == $id_utilisateur;
-      // });
-
-      // $annonces_page = array_filter($annonces_page, function($annonce) use ($option_selectionner,$id_utilisateur) {
-      //   return (($option_selectionner == 'actives' && $annonce["est_actif"] == 1) ||
-      //          ($option_selectionner == 'vendues' && $annonce["est_vendu"] == 1) ||
-      //           $option_selectionner == null) && $annonce["utilisateur_id"] == $id_utilisateur;
-      // });
   
   
       $nom_categorie = "Toutes";
