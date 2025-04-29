@@ -17,7 +17,6 @@ class UtilisateurController
     $this->utilisateur = new Utilisateur(); // instance du modèle Utilisateur
   }
 
-
   public function connexion_index(){
     chargerVue("/utilisateur/connexion");
   }
@@ -25,5 +24,23 @@ class UtilisateurController
   public function inscription_index(){
     chargerVue("/utilisateur/inscription");
   }
- 
+
+  
+  
+  public function connexion(){
+    var_dump('connexion');
+
+    $bin_connexion = true;
+
+    $email = obtenirParametre('email');
+    $mot_de_passe = obtenirParametre('mot_passe');
+
+    $bin_connexion = Validation::valider_email($email);
+
+    $utilisateur = $this -> utilisateur -> obtenir_utilisateur_email($email);
+
+    
+  }
+
+
 }

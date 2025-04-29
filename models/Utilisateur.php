@@ -26,4 +26,13 @@ class Utilisateur
       ]
     ) -> fetch();
   }
+
+  public function obtenir_utilisateur_email($email){
+    return $this -> bd -> requete(
+      "SELECT * FROM utilisateurs WHERE email = :email",
+      [
+        "email" => $email
+      ]
+    ) -> fetch();
+  }
 }
