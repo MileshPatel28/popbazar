@@ -28,18 +28,25 @@ class UtilisateurController
   
   
   public function connexion(){
-    var_dump('connexion');
 
     $bin_connexion = true;
 
     $email = obtenirParametre('email');
     $mot_de_passe = obtenirParametre('mot_passe');
 
-    $bin_connexion = Validation::valider_email($email);
-
-    $utilisateur = $this -> utilisateur -> obtenir_utilisateur_email($email);
+    if(Validation::valider_email($email) != false) $bin_connexion = true; 
 
     
+    $utilisateur = $this -> utilisateur -> obtenir_utilisateur_email($email);
+    $bin_connexion = password_verify($mot_de_passe,$utilisateur["mot_de_passe_hash"]);
+
+
+    if($bin_connexion){
+      var_dump("connecté!!");
+    }
+    else{
+      redirect("/connexion");
+    }
   }
 
 
