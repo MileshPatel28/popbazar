@@ -134,20 +134,20 @@ chargerVuePartielle('_nav');
 
             <!-- Lien vers la page précédente -->
             <li class="page-item <?= ($page == 1) ? 'disabled' : '' ?>" >
-                <a class="page-link" href="?page=<?= $page - 1 ?><!-- Ajouter le paramètre de sélection si présent -->" tabindex="-1" aria-disabled="<!-- true si première page, sinon false -->">Précédent</a>
+                <a class="page-link" href="?page=<?= $page - 1 ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>" tabindex="-1" aria-disabled="<?= ($page == 1) ? true : false ?>">Précédent</a>
             </li>
 
             <!-- Liens pour chaque page -->
             <?php for($i = 1; $i <= count($annonces) / 9; $i++){ ?>
             <!-- Boucle pour chaque page -->
                 <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
-                    <a class="page-link" href="?page=<?= $i ?><!-- Ajouter le paramètre de sélection si présent -->"><?= $i ?></a>
+                    <a class="page-link" href="?page=<?= $i ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>"><?= $i ?></a>
                 </li>
             <!-- Fin de la boucle -->
             <?php } ?>
             <!-- Lien vers la page suivante -->
             <li class="page-item <?= ($page == $i - 1) ? 'disabled' : '' ?>">
-                <a class="page-link" href="?page=<?= $page + 1 ?><!-- Ajouter le paramètre de sélection si présent -->" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
+                <a class="page-link" href="?page=<?= $page + 1 ?><?= (isset($selection) && $selection != null) ? "&selection=$selection" : ((isset($filter) && $filter != null) ? "&filter=$filter" : '')  ?>" aria-disabled="<!-- true si dernière page, sinon false -->">Suivant</a>
             </li>
 
         </ul>

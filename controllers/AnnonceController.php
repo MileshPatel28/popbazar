@@ -57,7 +57,8 @@ class AnnonceController
       "nombre_totale_annonce" => $nombre_totale_annonce,
       "nombre_active_annonce" => $nombre_active_annonce,
       "nombre_vendues_annonce" => $nombre_vendues_annonce,
-      "page" => $page 
+      "page" => $page,
+      "selection" => $option_selectionner
     ]);
   }
 
@@ -109,7 +110,7 @@ class AnnonceController
         "nombre_vendues_annonce" => $nombre_vendues_annonce,
         "id_utilisateur" => $id_utilisateur,
         "page" => $page,
-        "selection" => $option_selectionner
+        "filter" => $option_selectionner
       ]);
     }
     else{
