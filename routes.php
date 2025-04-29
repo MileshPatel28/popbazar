@@ -31,6 +31,7 @@ $routeur->post("/annonces/{id}/supprimer","AnnonceController@supprimer");
 $routeur->get("/connexion","UtilisateurController@connexion_index");
 $routeur->get("/inscription","UtilisateurController@inscription_index");
 
+$routeur->post("/inscription","UtilisateurController@inscription");
 $routeur->post("/connexion","UtilisateurController@connexion");
 $routeur->post("/deconnexion","UtilisateurController@deconnexion");
 

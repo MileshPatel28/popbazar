@@ -28,6 +28,9 @@ class UtilisateurController
   }
 
   
+  public function inscription(){
+    
+  }
   
   public function connexion(){
     $bin_connexion = true;
