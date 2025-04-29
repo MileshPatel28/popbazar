@@ -77,7 +77,7 @@ class AnnonceController
 
 
       $annonces = $this -> annonce -> get_annonces_utilisateur($id_utilisateur);
-      $annonces_page = $this -> annonce -> get_annonces($id_utilisateur,$page);
+      $annonces_page = $this -> annonce -> get_annonces_utilisateur($id_utilisateur,$page);
 
     
       $nombre_totale_annonce = 0;
