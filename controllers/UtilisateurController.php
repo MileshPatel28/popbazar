@@ -29,7 +29,27 @@ class UtilisateurController
 
   
   public function inscription(){
-    
+    $bin_inscription = true;
+
+
+    $nom = obtenirParametre("nom");
+    $prenom = obtenirParametre("prenom");
+
+    $nom_utilisateur = obtenirParametre("nom_utilisateur");
+
+    $email = obtenirParametre("email");
+
+    $mot_de_passe = obtenirParametre("mot_passe");
+    $confirmation_mot_passe = obtenirParametre("confirmation_mot_passe");
+
+    if($mot_de_passe != $confirmation_mot_passe){
+      $bin_inscription = false;
+    }
+
+    if($bin_inscription){
+      // Ajout requête pour inscrire
+      
+    }
   }
   
   public function connexion(){
