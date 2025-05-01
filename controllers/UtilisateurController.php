@@ -25,6 +25,7 @@ class UtilisateurController
   public function inscription_index(){
     Session::deja_connecte();
     chargerVue("/utilisateur/inscription");
+    inspecter('test','message test');
   }
 
   
