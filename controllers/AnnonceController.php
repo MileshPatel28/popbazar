@@ -79,7 +79,7 @@ class AnnonceController
       $annonces = $this -> annonce -> get_annonces_utilisateur($id_utilisateur);
       $annonces_page = $this -> annonce -> get_annonces_utilisateur($id_utilisateur,$page);
 
-    
+
       $nombre_totale_annonce = 0;
       $nombre_active_annonce = 0;
       $nombre_vendues_annonce = 0;
@@ -185,7 +185,6 @@ class AnnonceController
       array_push($liste_erreurs,"Le description doit être au moins 30 caractères.");
     }
 
-  
     if($liste_erreurs == []){
       $this -> annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
       ,$prix,$etat);
@@ -200,7 +199,7 @@ class AnnonceController
 
 
 
-  public function index_modifier($donnes){
+  public function index_modifier($donnes,$erreurs = []){
 
     require_once get_chemin_defaut('models/Categorie.php');
 
@@ -209,7 +208,8 @@ class AnnonceController
     if(Session::est_connecte() && Session::obtenir_id_utilisateur() == $this -> annonce -> get_annouce_par_id($donnes["id"])["utilisateur_id"]){
       chargerVue('annonces/modifier',[
         "annonce" => $this -> annonce -> get_annouce_par_id($donnes["id"]),
-        "categorie" => $categorie -> get_categorie($this -> annonce -> get_annouce_par_id($donnes["id"])["categorie_id"])
+        "categorie" => $categorie -> get_categorie($this -> annonce -> get_annouce_par_id($donnes["id"])["categorie_id"]),
+        "erreurs" => $erreurs
       ]);
     }
     else if(Session::est_connecte()){
@@ -237,6 +237,8 @@ class AnnonceController
     }
     else{
 
+      $liste_erreurs = [];
+
       $categorie = new Categorie();
       $id_categorie = $categorie->get_categorie_par_nom(obtenirParametre('categorie'))["id"];
   
@@ -244,9 +246,24 @@ class AnnonceController
       $description = obtenirParametre('description');
       $prix = obtenirParametre('prix');
       $etat = obtenirParametre('etat');
+
+      if(strlen($titre) > 70){
+        array_push($liste_erreurs,"Le titre doit être au maximum 70 caractères.");
+      }
   
-      $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
-      redirect('/annonces/' . $id_annonce);
+      if(strlen($description) < 30){
+        array_push($liste_erreurs,"Le description doit être au moins 30 caractères.");
+      }
+  
+      if($liste_erreurs == []){
+        $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
+        redirect('/annonces/' . $id_annonce);
+      }
+      else{
+        $this -> index_modifier(["id" => $id_annonce],$liste_erreurs);
+      }
+
+    
     }
   }
 

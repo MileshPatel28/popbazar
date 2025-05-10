@@ -8,7 +8,7 @@ chargerVuePartielle('_entete');
 
 <?php
 chargerVuePartielle('_nav');
-
+var_dump(Session::obtenir_id_utilisateur());
 ?>
 
 <!-- Main Content -->
