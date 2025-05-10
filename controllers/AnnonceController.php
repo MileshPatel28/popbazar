@@ -247,6 +247,7 @@ class AnnonceController
       $prix = obtenirParametre('prix');
       $etat = obtenirParametre('etat');
 
+
       if(strlen($titre) > 70){
         array_push($liste_erreurs,"Le titre doit être au maximum 70 caractères.");
       }
@@ -255,6 +256,7 @@ class AnnonceController
         array_push($liste_erreurs,"Le description doit être au moins 30 caractères.");
       }
   
+      
       if($liste_erreurs == []){
         $this -> annonce -> update_annonce($id_annonce,$id_categorie,$titre,$description,$prix,$etat);
         redirect('/annonces/' . $id_annonce);

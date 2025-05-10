@@ -116,7 +116,7 @@ chargerVuePartielle('_nav');
         </div>
 
         <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" id="active" name="est_actif" >
+          <input class="form-check-input" type="checkbox" id="active" name="est_actif" <?= ($annonce["est_actif"] == 1) ? 'checked' : ''; ?> >
           <label class="form-check-label" for="active">
             Annonce active
           </label>
