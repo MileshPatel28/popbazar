@@ -147,10 +147,12 @@ class AnnonceController
   }
 
 
-  public function index_ajouter(){
+  public function index_ajouter($erreurs = []){
 
     if(Session::est_connecte()){
-      chargerVue('annonces/ajouter');
+      chargerVue('annonces/ajouter',[
+        "erreurs" => $erreurs
+      ]);
     }
     else{
       redirect('/connexion');
@@ -160,9 +162,10 @@ class AnnonceController
   }
 
   public function ajouter(){
-
     require_once get_chemin_defaut('models/Categorie.php');
     require_once get_chemin_defaut('models/Annonce.php');
+
+    $liste_erreurs = [];
 
     $id_utilisateur = Session::obtenir_id_utilisateur();
 
@@ -174,13 +177,25 @@ class AnnonceController
     $prix = obtenirParametre('prix');
     $etat = obtenirParametre('etat');
 
+    if(strlen($titre) > 70){
+      array_push($liste_erreurs,"Le titre doit être au maximum 70 caractères.");
+    }
 
-    $annonce = new Annonce();
-    $annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
+    if(strlen($description) < 30){
+      array_push($liste_erreurs,"Le description doit être au moins 30 caractères.");
+    }
+
+  
+    if($liste_erreurs == []){
+      $this -> annonce -> ajout_annonce($id_utilisateur,$id_categorie,$titre,$description
       ,$prix,$etat);
 
-    redirect('/annonces/' . $annonce -> obtenir_annonce_ajouter()["id"]);
-  
+      redirect('/annonces/' . ($this -> annonce -> obtenir_annonce_ajouter()["id"]));
+    }
+    else{
+      $this -> index_ajouter($liste_erreurs);
+    }
+
   }
 
 
