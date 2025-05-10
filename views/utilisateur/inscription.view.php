@@ -3,11 +3,12 @@
 
 chargerVuePartielle('_entete');
 chargerVuePartielle('_nav');
-
 ?>
 <!-- Register Container -->
 <div class="container">
+  
   <div class="register-container">
+    <?php chargerVuePartielle('_erreur','',$erreurs); ?>
     <div class="register-header">
       <i class="fas fa-user-plus"></i>
       <h2>Créer un compte</h2>
