@@ -68,11 +68,12 @@ chargerVuePartielle('_nav');
                                 <li>
 
                                     <!-- Formulaire pour marquer comme vendu -->
+                                    <?php if($annonce["est_vendu"] == 0){ ?>
                                     <form id="form-vendue" method="POST" action="/annonces/<?=$annonce["id"]?>">
                                         <input type="hidden" name="est_vendu" value="1">
                                         <button class="dropdown-item text-danger" type="submit"><i class="fas fa-check-circle me-2"></i>Marquer comme vendu</button>
                                     </form>
-
+                                    <?php } ?>
 
                                 </li>
                                 <?php } ?>
