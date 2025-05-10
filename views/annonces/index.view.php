@@ -129,7 +129,9 @@ chargerVuePartielle('_nav');
     </div>
 
     <!-- Pagination -->
+    
     <nav aria-label="Page navigation" class="mt-4">
+        <?php if(count($annonces_page) > 9) { ?>
         <ul class="pagination justify-content-center">
 
             <!-- Lien vers la page précédente -->
@@ -151,8 +153,9 @@ chargerVuePartielle('_nav');
             </li>
 
         </ul>
+        <?php } ?>
     </nav>
-
+    
 </div>
 
 <script>

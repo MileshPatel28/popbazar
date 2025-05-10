@@ -34,11 +34,13 @@ class Annonce
 
   public function get_annonces_utilisateur($id_utilisateur,$page = -1){
     if ($page != -1) {
-      return $this->bd->requete(
+      $annonce_pages = $this->bd->requete(
         'SELECT * FROM produits WHERE utilisateur_id = :utilisateur_id
         ORDER BY id LIMIT 9 OFFSET ' . ($page*9),
         ["utilisateur_id" => $id_utilisateur]
       )->fetchAll();
+
+      if($annonce_pages != []) return $annonce_pages;
     }
 
     return $this->bd->requete(

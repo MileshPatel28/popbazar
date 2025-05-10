@@ -20,6 +20,7 @@ chargerVuePartielle('_nav');
   </nav>
 
   <div class="create-listing-container">
+    <?php chargerVuePartielle('_erreur','',$erreurs); ?>
     <h1 class="form-title"><i class="fas fa-edit me-2"></i>Modifier votre annonce</h1>
     <p class="text-muted mb-4">Mettez à jour les informations de votre annonce pour la communauté PopBazaar.</p>
 
@@ -115,7 +116,7 @@ chargerVuePartielle('_nav');
         </div>
 
         <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox" id="active" name="est_actif" <!-- coché si actif -->>
+          <input class="form-check-input" type="checkbox" id="active" name="est_actif" <?= ($annonce["est_actif"] == 1) ? 'checked' : ''; ?> >
           <label class="form-check-label" for="active">
             Annonce active
           </label>

@@ -8,7 +8,7 @@ chargerVuePartielle('_entete');
 
 <?php
 chargerVuePartielle('_nav');
-chargerVuePartielle('_erreur','',[]);
+var_dump(Session::obtenir_id_utilisateur());
 ?>
 
 <!-- Main Content -->
@@ -22,6 +22,7 @@ chargerVuePartielle('_erreur','',[]);
   </nav>
 
   <div class="create-listing-container">
+    <?php chargerVuePartielle('_erreur','',$erreurs); ?>
     <h1 class="form-title"><i class="fas fa-plus-circle me-2"></i>Créer une nouvelle annonce</h1>
     <p class="text-muted mb-4">Remplissez tous les champs ci-dessous pour publier votre annonce dans la communauté PopBazar.</p>
 
