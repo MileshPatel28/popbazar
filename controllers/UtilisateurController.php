@@ -22,9 +22,11 @@ class UtilisateurController
     chargerVue("/utilisateur/connexion");
   }
 
-  public function inscription_index(){
+  public function inscription_index($donnes){
     Session::deja_connecte();
-    chargerVue("/utilisateur/inscription");
+    chargerVue("/utilisateur/inscription",[
+      "erreurs" => $donnes
+    ]);
     inspecter('test','message test');
   }
 
@@ -32,6 +34,7 @@ class UtilisateurController
   public function inscription(){
     $bin_inscription = true;
 
+    $liste_erreurs = [];
 
     $nom = obtenirParametre("nom");
     $prenom = obtenirParametre("prenom");
@@ -45,12 +48,58 @@ class UtilisateurController
 
     if($mot_de_passe != $confirmation_mot_passe){
       $bin_inscription = false;
+      array_push($liste_erreurs,"Le mot de passe n'est pas le même que le mot de passe de confirmation.");
     }
 
-    if($bin_inscription){
-      // Ajout requête pour inscrire
-      
+    if(strlen($nom) < 2 || strlen($nom) > 50){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le nom doit comporter entre 2 et 50 caractères.");
     }
+
+    if(strlen($prenom) < 2 || strlen($prenom) > 50){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le prenom doit comporter entre 2 et 50 caractères.");
+    }
+
+    if(strlen($nom_utilisateur) < 4 || strlen($nom_utilisateur) > 50){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le nom d'utilisateur doit avoir entre 4 et 50 caractères.");
+    }
+
+
+
+    if(!strlen($mot_de_passe) >= 8){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le mot de passe doit contenir au moins 8 caractères.");
+    }
+    if(!preg_match('/[A-Z]/',$mot_de_passe)){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le mot de passe doit contenir au moins une lettre majuscule.");
+    }
+    if(!preg_match('/[0-9]/',$mot_de_passe)){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le mot de passe doit contenir au moins un chiffre.");
+    }
+    if(!preg_match('/[^a-zA-Z0-9]/',$mot_de_passe)){
+      $bin_inscription = false;
+      array_push($liste_erreurs,"Le mot de passe doit contenir au moins un caractère spécial.");
+    }
+    
+
+    if($bin_inscription){
+      $this -> utilisateur -> inserer_utilisateur(
+        $nom_utilisateur,
+        $email,
+        password_hash($mot_de_passe,PASSWORD_DEFAULT),
+        $prenom,
+        $nom
+      );
+      redirect('/');
+    }
+    else{
+      $this -> inscription_index($liste_erreurs);
+    }
+    
   }
   
   public function connexion(){

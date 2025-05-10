@@ -35,4 +35,18 @@ class Utilisateur
       ]
     ) -> fetch();
   }
+
+  public function inserer_utilisateur($nom_utilisateur,$email,$mot_de_passe_hash,$prenom,$nom){
+    $this -> bd -> requete(
+      "INSERT INTO utilisateurs (nom_utilisateur,email,mot_de_passe_hash,prenom,nom)
+        VALUES (:nom_utilisateur,:email,:mot_de_passe_hash,:prenom,:nom)",
+        [
+          "nom_utilisateur" => $nom_utilisateur,
+          "email" => $email,
+          "mot_de_passe_hash" => $mot_de_passe_hash,
+          "prenom" => $prenom,
+          "nom" => $nom
+        ]
+      );
+  }
 }
