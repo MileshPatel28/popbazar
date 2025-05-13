@@ -1,5 +1,14 @@
 <?php
 
+/** 
+Database.php - La classe de BD.
+ 
+Ce fichier regroupe plusieurs fonctions utilitaires pour 
+communiquer avec la base de données.
+ 
+@author Milesh Patel 
+*/
+
 class Database
 {
   public $connection;

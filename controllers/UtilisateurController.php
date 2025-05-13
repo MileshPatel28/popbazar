@@ -1,8 +1,14 @@
 <?php
 
-/**
- * Contrôleur Utilisateur qui permet de gérer les utilisateurs comme l'inscription, la connexion, la déconnexion, etc.
- */
+/** 
+UtilisateurController.php - Controlleur pour les utilisateur. 
+ 
+Ce fichier contrôle les fonctionalités en lien avec les 
+utilisateurs comme la connexion , l'inscription, etc.
+ 
+@author Milesh Patel 
+*/
+
 
 class UtilisateurController
 

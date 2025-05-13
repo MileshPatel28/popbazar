@@ -1,7 +1,12 @@
 <?php
-/**
- * Contrôleur d'erreur qui gère les erreurs 404
- */
+/** 
+ErreurController.php - Controlleur des erreurs.
+ 
+Ce fichier contrôle les erreurs avec les routes
+comme une page introuvable.
+ 
+@author Dom et Milesh Patel 
+*/
 
 class ErreurController
 {

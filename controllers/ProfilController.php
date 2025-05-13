@@ -1,8 +1,14 @@
 <?php
 
-/**
- * Controleur qui gère les opérations liées au profil utilisateur
- */
+/** 
+ProfilController.php - Controlleur de profil.
+ 
+Ce fichier contrôle tous qui est en liens
+avec l'affichage du profile de l'utilisateur.
+ 
+@author Milesh Patel 
+*/
+
 
 class ProfilController
 {

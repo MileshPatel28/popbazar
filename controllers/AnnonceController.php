@@ -1,9 +1,15 @@
 <?php
 
-/**
- * Controller de qui gère les opérations liées aux annonces comme l'affichage, la création, la modification, la suppression, etc.
- * 
- */
+/** 
+AnnonceController.php - Controlleur des annonces. 
+ 
+Ce fichier contrôle tous les actions en lien 
+avec les annonces comme l'affichage , supression, 
+ajout, etc...
+ 
+@author Milesh Patel 
+*/
+
 
 class AnnonceController
 {

@@ -1,9 +1,15 @@
 <?php
 
-/**
- * Controleur qui gère les opérations liées aux annonces par catégories
- * 
- */
+/** 
+CategorieController.php - Controlleur des catégories 
+ 
+Ce fichier contrôle les actions en liens avec 
+les catégories , comme afficher tous les 
+jeux vidéos.
+ 
+@author Milesh Patel 
+*/
+
 class CategorieController
 {
 

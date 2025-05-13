@@ -1,9 +1,13 @@
 <?php
 
-/**
- * Controller de la page d'accueil
- * 
- */
+/** 
+AcceuilController.php - Controlleur acceuil.
+ 
+Ce fichier permet à controller tous les actions
+en liens avec la page d'acceuil.
+ 
+@author Milesh Patel 
+*/
 
 class AccueilController
 {

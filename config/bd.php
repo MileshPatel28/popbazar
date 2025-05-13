@@ -1,4 +1,11 @@
 <?php
+/** 
+bd.php - Connecter au BD.
+ 
+Ce fichier permet à l'application de connecter à la base de donnée.
+ 
+@author Milesh Patel 
+*/
 
 // charger les variables d'environnement à partir du fichier .env
 require_once get_chemin_defaut('.env.php');
