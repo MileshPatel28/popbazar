@@ -1,4 +1,16 @@
 <?php
+
+/** 
+Validation.php - Class utilitaire pour validation
+ 
+Ce fichier permet de regrouper tous les fonctions 
+pour valider les champs dans l'application
+comme quand l'utilisateur se conencter à son compte.
+ 
+@author Milesh Patel 
+*/
+
+
 class Validation
 {
 

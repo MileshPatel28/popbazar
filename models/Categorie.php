@@ -1,10 +1,14 @@
 <?php
 
-/**
- * Classe Annonce
- * Modèle pour gérer les annonces par categorie dans la base de données
- * 
- */
+/** 
+Categorie.php - Interface pour les catégories.
+ 
+Ce fichier sert comme une interface pour communiquer à la base
+de donnée pour tous les données liés au catégories.
+ 
+@author Milesh Patel 
+*/
+
 class Categorie
 {
   private $bd; // Connexion à la base de données

@@ -1,10 +1,14 @@
 <?php
 
-/**
- * Classe Session
- * classe utilitaire qui gère les sessions
- * 
- */
+/** 
+Session.php - Class utilitaire Session 
+ 
+Ce fichier permet de éviter la réptition et d'organiser
+tous les fonctions en lien avec une session dans une classe 
+statique pour être réutilisé à travers l'application.
+ 
+@author Milesh Patel + Dom
+*/
 
 
 class Session

@@ -2,10 +2,15 @@
 
 require_once get_chemin_defaut("controllers/ErreurController.php");
 
-/**
- * classe Routeur qui gère les routes de l'application
- * 
- */
+/** 
+Routeur.php - Classe Routeur
+ 
+Ce fichier gère les routes de l'application.
+ 
+@author Milesh Patel 
+*/
+
+
 
 class Routeur
 {

@@ -1,9 +1,14 @@
 <?php
 
-/**
- * Classe Annonce
- * Modèle pour gérer les utilisateurs dans la base de données
- */
+/** 
+Utilisateur.php - Interface à BD pour utilisateurs
+ 
+Ce fichier sert a une interface pour communiquer à la 
+base de donnée pour tous les données liés à une utilisateur
+comme leur email,id,etc...
+ 
+@author Milesh Patel 
+*/
 
 class Utilisateur
 {

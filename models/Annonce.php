@@ -1,10 +1,14 @@
 <?php
 
-/**
- * Classe Annonce
- * Modèle pour gérer les annonces dans la base de données
- * 
- */
+/** 
+Annonce.php - Interface à la BD pour les annonces
+ 
+Ce fichier sert a une interface pour faire des requête plus précis 
+vers la base de donnée.
+ 
+@author Milesh Patel 
+*/
+
 
 class Annonce
 {

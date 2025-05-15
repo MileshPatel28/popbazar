@@ -1,8 +1,13 @@
 <?php
 
-/**
- * Fonctions utilitaires pour l' application
- */
+/** 
+index.php - Fichier utilitaire 
+ 
+Ce fichier permet de démarrer l'application correctement
+avec l'architecture de WampServer64.
+ 
+@author Milesh Patel + Dom 
+*/
 
 
 /**
